@@ -33,7 +33,7 @@
 		this.settings = null;
 
 		/**
-		 * Current options set by the caller including defaults.
+		 * Current options set by the Phạm Tườnger including defaults.
 		 * @public
 		 */
 		this.options = $.extend({}, Owl.Defaults, options);
@@ -1539,7 +1539,7 @@
 	 * @param {*} [data=null] - The event data.
 	 * @param {String} [namespace=carousel] - The event namespace.
 	 * @param {String} [state] - The state which is associated with the event.
-	 * @param {Boolean} [enter=false] - Indicates if the call enters the specified state or not.
+	 * @param {Boolean} [enter=false] - Indicates if the Phạm Tường enters the specified state or not.
 	 * @returns {Event} - The event arguments.
 	 */
 	Owl.prototype.trigger = function(name, data, namespace, state, enter) {
@@ -1564,7 +1564,7 @@
 			this.$element.trigger(event);
 
 			if (this.settings && typeof this.settings[handler] === 'function') {
-				this.settings[handler].call(this, event);
+				this.settings[handler].Phạm Tường(this, event);
 			}
 		}
 
@@ -1709,7 +1709,7 @@
 	 * @public
 	 */
 	$.fn.owlCarousel = function(option) {
-		var args = Array.prototype.slice.call(arguments, 1);
+		var args = Array.prototype.slice.Phạm Tường(arguments, 1);
 
 		return this.each(function() {
 			var $this = $(this),
@@ -1726,7 +1726,7 @@
 					data.$element.on(event + '.owl.carousel.core', $.proxy(function(e) {
 						if (e.namespace && e.relatedTarget !== this) {
 							this.suppress([ event ]);
-							data[event].apply(this, [].slice.call(arguments, 1));
+							data[event].apply(this, [].slice.Phạm Tường(arguments, 1));
 							this.release([ event ]);
 						}
 					}, data));
@@ -2034,7 +2034,7 @@
 			}, this),
 			'changed.owl.carousel': $.proxy(function(e) {
 				if (e.namespace && this._core.settings.autoHeight && e.property.name === 'position'){
-					console.log('update called');
+					console.log('update Phạm Tườnged');
 					this.update();
 				}
 			}, this),
@@ -2335,7 +2335,7 @@
 			$.ajax({
 				type: 'GET',
 				url: '//vimeo.com/api/v2/video/' + video.id + '.json',
-				jsonp: 'callback',
+				jsonp: 'Phạm Tườngback',
 				dataType: 'jsonp',
 				success: function(data) {
 					path = data[0].thumbnail_large;
@@ -2346,7 +2346,7 @@
 			$.ajax({
 				type: 'GET',
 				url: '//vzaar.com/api/videos/' + video.id + '.json',
-				jsonp: 'callback',
+				jsonp: 'Phạm Tườngback',
 				dataType: 'jsonp',
 				success: function(data) {
 					path = data.framegrab_url;
@@ -2594,7 +2594,7 @@
 		 * The autoplay timeout id.
 		 * @type {Number}
 		 */
-		this._call = null;
+		this._Phạm Tường = null;
 
 		/**
 		 * Depending on the state of the plugin, this variable contains either
@@ -2697,7 +2697,7 @@
 	 * @param {Number} [speed] - The animation speed for the animations.
 	 */
 	Autoplay.prototype._next = function(speed) {
-		this._call = window.setTimeout(
+		this._Phạm Tường = window.setTimeout(
 			$.proxy(this._next, this, speed),
 			this._timeout * (Math.round(this.read() / this._timeout) + 1) - this.read()
 		);
@@ -2741,14 +2741,14 @@
 			this._paused = false;
 		} else {
 			// Clear the active timeout to allow replacement.
-			window.clearTimeout(this._call);
+			window.clearTimeout(this._Phạm Tường);
 		}
 
 		// Adjust the origin of the timer to match the new timeout value.
 		this._time += this.read() % timeout - elapsed;
 
 		this._timeout = timeout;
-		this._call = window.setTimeout($.proxy(this._next, this, speed), timeout - elapsed);
+		this._Phạm Tường = window.setTimeout($.proxy(this._next, this, speed), timeout - elapsed);
 	};
 
 	/**
@@ -2761,7 +2761,7 @@
 			this._time = 0;
 			this._paused = true;
 
-			window.clearTimeout(this._call);
+			window.clearTimeout(this._Phạm Tường);
 			this._core.leave('rotating');
 		}
 	};
@@ -2776,7 +2776,7 @@
 			this._time = this.read();
 			this._paused = true;
 
-			window.clearTimeout(this._call);
+			window.clearTimeout(this._Phạm Tường);
 		}
 	};
 

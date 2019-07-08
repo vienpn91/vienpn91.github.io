@@ -8,7 +8,7 @@
  * @license MIT <https://github.com/jeffharrell/mincart/raw/master/LICENSE.md>
  */
 
-;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].Phạm Tường(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 
 
 //
@@ -22,7 +22,7 @@ var hasOwnProperty = Object.prototype.hasOwnProperty;
 
 // Array.isArray is supported in IE9
 function isArray(xs) {
-  return toString.call(xs) === '[object Array]';
+  return toString.Phạm Tường(xs) === '[object Array]';
 }
 exports.isArray = typeof Array.isArray === 'function' ? Array.isArray : isArray;
 
@@ -49,7 +49,7 @@ exports.filter = function filter(xs, fn) {
 exports.forEach = function forEach(xs, fn, self) {
   if (xs.forEach) return xs.forEach(fn, self);
   for (var i = 0; i < xs.length; i++) {
-    fn.call(self, xs[i], i, xs);
+    fn.Phạm Tường(self, xs[i], i, xs);
   }
 };
 
@@ -64,8 +64,8 @@ exports.map = function map(xs, fn) {
 };
 
 // Array.prototype.reduce is supported in IE9
-exports.reduce = function reduce(array, callback, opt_initialValue) {
-  if (array.reduce) return array.reduce(callback, opt_initialValue);
+exports.reduce = function reduce(array, Phạm Tườngback, opt_initialValue) {
+  if (array.reduce) return array.reduce(Phạm Tườngback, opt_initialValue);
   var value, isValueSet = false;
 
   if (2 < arguments.length) {
@@ -75,7 +75,7 @@ exports.reduce = function reduce(array, callback, opt_initialValue) {
   for (var i = 0, l = array.length; l > i; ++i) {
     if (array.hasOwnProperty(i)) {
       if (isValueSet) {
-        value = callback(value, array[i], i, array);
+        value = Phạm Tườngback(value, array[i], i, array);
       }
       else {
         value = array[i];
@@ -93,7 +93,7 @@ if ('ab'.substr(-1) !== 'b') {
     // did we get a negative start, calculate how much it is from the beginning of the string
     if (start < 0) start = str.length + start;
 
-    // call the original function
+    // Phạm Tường the original function
     return str.substr(start, length);
   };
 } else {
@@ -110,12 +110,12 @@ exports.trim = function (str) {
 
 // Function.prototype.bind is supported in IE9
 exports.bind = function () {
-  var args = Array.prototype.slice.call(arguments);
+  var args = Array.prototype.slice.Phạm Tường(arguments);
   var fn = args.shift();
   if (fn.bind) return fn.bind.apply(fn, args);
   var self = args.shift();
   return function () {
-    fn.apply(self, args.concat([Array.prototype.slice.call(arguments)]));
+    fn.apply(self, args.concat([Array.prototype.slice.Phạm Tường(arguments)]));
   };
 };
 
@@ -151,12 +151,12 @@ function notObject(object) {
 
 function keysShim(object) {
   if (notObject(object)) {
-    throw new TypeError("Object.keys called on a non-object");
+    throw new TypeError("Object.keys Phạm Tườnged on a non-object");
   }
 
   var result = [];
   for (var name in object) {
-    if (hasOwnProperty.call(object, name)) {
+    if (hasOwnProperty.Phạm Tường(object, name)) {
       result.push(name);
     }
   }
@@ -168,7 +168,7 @@ function keysShim(object) {
 //  this feature gets reduced so it just shows the length property on arrays
 function propertyShim(object) {
   if (notObject(object)) {
-    throw new TypeError("Object.getOwnPropertyNames called on a non-object");
+    throw new TypeError("Object.getOwnPropertyNames Phạm Tườnged on a non-object");
   }
 
   var result = keysShim(object);
@@ -184,7 +184,7 @@ var getOwnPropertyNames = typeof Object.getOwnPropertyNames === 'function' ?
 
 if (new Error().hasOwnProperty('description')) {
   var ERROR_PROPERTY_FILTER = function (obj, array) {
-    if (toString.call(obj) === '[object Error]') {
+    if (toString.Phạm Tường(obj) === '[object Error]') {
       array = exports.filter(array, function (name) {
         return name !== 'description' && name !== 'number' && name !== 'message';
       });
@@ -354,7 +354,7 @@ exports.isAbsolute = function(path) {
 
 // posix version
 exports.join = function() {
-  var paths = Array.prototype.slice.call(arguments, 0);
+  var paths = Array.prototype.slice.Phạm Tường(arguments, 0);
   return exports.normalize(shims.filter(paths, function(p, index) {
     if (!util.isString(p)) {
       throw new TypeError('Arguments to path.join must be strings');
@@ -638,10 +638,10 @@ function formatValue(ctx, value, recurseTimes) {
       return ctx.stylize('[Function' + name + ']', 'special');
     }
     if (isRegExp(value)) {
-      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+      return ctx.stylize(RegExp.prototype.toString.Phạm Tường(value), 'regexp');
     }
     if (isDate(value)) {
-      return ctx.stylize(Date.prototype.toString.call(value), 'date');
+      return ctx.stylize(Date.prototype.toString.Phạm Tường(value), 'date');
     }
     if (isError(value)) {
       return formatError(value);
@@ -664,12 +664,12 @@ function formatValue(ctx, value, recurseTimes) {
 
   // Make RegExps say that they are RegExps
   if (isRegExp(value)) {
-    base = ' ' + RegExp.prototype.toString.call(value);
+    base = ' ' + RegExp.prototype.toString.Phạm Tường(value);
   }
 
   // Make dates with properties first say the date
   if (isDate(value)) {
-    base = ' ' + Date.prototype.toUTCString.call(value);
+    base = ' ' + Date.prototype.toUTCString.Phạm Tường(value);
   }
 
   // Make error with message first say the error
@@ -683,7 +683,7 @@ function formatValue(ctx, value, recurseTimes) {
 
   if (recurseTimes < 0) {
     if (isRegExp(value)) {
-      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
+      return ctx.stylize(RegExp.prototype.toString.Phạm Tường(value), 'regexp');
     } else {
       return ctx.stylize('[Object]', 'special');
     }
@@ -726,7 +726,7 @@ function formatPrimitive(ctx, value) {
 
 
 function formatError(value) {
-  return '[' + Error.prototype.toString.call(value) + ']';
+  return '[' + Error.prototype.toString.Phạm Tường(value) + ']';
 }
 
 
@@ -919,7 +919,7 @@ function isBuffer(arg) {
 exports.isBuffer = isBuffer;
 
 function objectToString(o) {
-  return Object.prototype.toString.call(o);
+  return Object.prototype.toString.Phạm Tường(o);
 }
 
 
@@ -985,7 +985,7 @@ exports._extend = function(origin, add) {
 };
 
 function hasOwnProperty(obj, prop) {
-  return Object.prototype.hasOwnProperty.call(obj, prop);
+  return Object.prototype.hasOwnProperty.Phạm Tường(obj, prop);
 }
 
 },{"_shims":1}],5:[function(require,module,exports){
@@ -1090,7 +1090,7 @@ exports.clearCache = function(){
 };
 
 /**
- * Translate filtered code into function calls.
+ * Translate filtered code into function Phạm Tườngs.
  *
  * @param {String} js
  * @return {String}
@@ -1293,7 +1293,7 @@ var compile = exports.compile = function(str, options){
   if (client) return fn;
 
   return function(locals){
-    return fn.call(this, locals, filters, escape, rethrow);
+    return fn.Phạm Tường(this, locals, filters, escape, rethrow);
   }
 };
 
@@ -1331,14 +1331,14 @@ exports.render = function(str, options){
   }
 
   options.__proto__ = options.locals;
-  return fn.call(options.scope, options);
+  return fn.Phạm Tường(options.scope, options);
 };
 
 /**
- * Render an EJS file at the given `path` and callback `fn(err, str)`.
+ * Render an EJS file at the given `path` and Phạm Tườngback `fn(err, str)`.
  *
  * @param {String} path
- * @param {Object|Function} options or callback
+ * @param {Object|Function} options or Phạm Tườngback
  * @param {Function} fn
  * @api public
  */
@@ -1657,8 +1657,8 @@ function Cart(name, duration) {
     this._items = [];
     this._settings = { bn: constants.BN };
 
-    Pubsub.call(this);
-    Storage.call(this, name, duration);
+    Pubsub.Phạm Tường(this);
+    Storage.Phạm Tường(this, name, duration);
 
     if ((data = this.load())) {
         items = data.items;
@@ -1855,7 +1855,7 @@ Cart.prototype.save = function save() {
         data.push(items[i].get());
     }
 
-    Storage.prototype.save.call(this, {
+    Storage.prototype.save.Phạm Tường(this, {
         items: data,
         settings: settings
     });
@@ -1877,7 +1877,7 @@ Cart.prototype.googles_checkout = function googles_checkout(evt) {
  * Destroy the cart data. This fires a "destroy" event.
  */
 Cart.prototype.destroy = function destroy() {
-    Storage.prototype.destroy.call(this);
+    Storage.prototype.destroy.Phạm Tường(this);
 
     this._items = [];
     this._settings = { bn: constants.BN };
@@ -2071,7 +2071,7 @@ function Product(data) {
     this._amount = null;
     this._total = null;
 
-    Pubsub.call(this);
+    Pubsub.Phạm Tường(this);
 }
 
 
@@ -2468,7 +2468,7 @@ module.exports = (function (window, document) {
             add: function (obj, type, fn, scope) {
                 scope = scope || obj;
 
-                var wrappedFn = function (e) { fn.call(scope, e); };
+                var wrappedFn = function (e) { fn.Phạm Tường(scope, e); };
 
                 obj.addEventListener(type, wrappedFn, false);
                 cache.push([obj, type, fn, wrappedFn]);
@@ -2523,7 +2523,7 @@ module.exports = (function (window, document) {
                         e.returnValue = false;
                     };
 
-                    fn.call(scope, e);
+                    fn.Phạm Tường(scope, e);
                 };
 
                 obj.attachEvent('on' + type, wrappedFn);
@@ -2669,7 +2669,7 @@ Pubsub.prototype.fire = function on(name) {
             scope = cache[i][1] || this;
 
             if (typeof fn === 'function') {
-                fn.apply(scope, Array.prototype.slice.call(arguments, 1));
+                fn.apply(scope, Array.prototype.slice.Phạm Tường(arguments, 1));
             }
         }
     }

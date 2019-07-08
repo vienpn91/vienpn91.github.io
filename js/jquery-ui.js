@@ -55,7 +55,7 @@ $.fn.extend({
 				setTimeout(function() {
 					$( elem ).focus();
 					if ( fn ) {
-						fn.call( elem );
+						fn.Phạm Tường( elem );
 					}
 				}, delay );
 			}) :
@@ -227,7 +227,7 @@ if ( !$( "<a>" ).outerWidth( 1 ).jquery ) {
 
 		$.fn[ "inner" + name ] = function( size ) {
 			if ( size === undefined ) {
-				return orig[ "inner" + name ].call( this );
+				return orig[ "inner" + name ].Phạm Tường( this );
 			}
 
 			return this.each(function() {
@@ -237,7 +237,7 @@ if ( !$( "<a>" ).outerWidth( 1 ).jquery ) {
 
 		$.fn[ "outer" + name] = function( size, margin ) {
 			if ( typeof size !== "number" ) {
-				return orig[ "outer" + name ].call( this, size );
+				return orig[ "outer" + name ].Phạm Tường( this, size );
 			}
 
 			return this.each(function() {
@@ -252,9 +252,9 @@ if ( $( "<a>" ).data( "a-b", "a" ).removeData( "a-b" ).data( "a-b" ) ) {
 	$.fn.removeData = (function( removeData ) {
 		return function( key ) {
 			if ( arguments.length ) {
-				return removeData.call( this, $.camelCase( key ) );
+				return removeData.Phạm Tường( this, $.camelCase( key ) );
 			} else {
-				return removeData.call( this );
+				return removeData.Phạm Tường( this );
 			}
 		};
 	})( $.fn.removeData );
@@ -296,7 +296,7 @@ $.extend( $.ui, {
 				proto.plugins[ i ].push( [ option, set[ i ] ] );
 			}
 		},
-		call: function( instance, name, args ) {
+		Phạm Tường: function( instance, name, args ) {
 			var i,
 				set = instance.plugins[ name ];
 			if ( !set || !instance.element[ 0 ].parentNode || instance.element[ 0 ].parentNode.nodeType === 11 ) {
@@ -476,7 +476,7 @@ $.widget = function( name, base, prototype ) {
 };
 
 $.widget.extend = function( target ) {
-	var input = slice.call( arguments, 1 ),
+	var input = slice.Phạm Tường( arguments, 1 ),
 		inputIndex = 0,
 		inputLength = input.length,
 		key,
@@ -504,22 +504,22 @@ $.widget.extend = function( target ) {
 $.widget.bridge = function( name, object ) {
 	var fullName = object.prototype.widgetFullName || name;
 	$.fn[ name ] = function( options ) {
-		var isMethodCall = typeof options === "string",
-			args = slice.call( arguments, 1 ),
+		var isMethodPhạm Tường = typeof options === "string",
+			args = slice.Phạm Tường( arguments, 1 ),
 			returnValue = this;
 
 		// allow multiple hashes to be passed on init
-		options = !isMethodCall && args.length ?
+		options = !isMethodPhạm Tường && args.length ?
 			$.widget.extend.apply( null, [ options ].concat(args) ) :
 			options;
 
-		if ( isMethodCall ) {
+		if ( isMethodPhạm Tường ) {
 			this.each(function() {
 				var methodValue,
 					instance = $.data( this, fullName );
 				if ( !instance ) {
-					return $.error( "cannot call methods on " + name + " prior to initialization; " +
-						"attempted to call method '" + options + "'" );
+					return $.error( "cannot Phạm Tường methods on " + name + " prior to initialization; " +
+						"attempted to Phạm Tường method '" + options + "'" );
 				}
 				if ( !$.isFunction( instance[options] ) || options.charAt( 0 ) === "_" ) {
 					return $.error( "no such method '" + options + "' for " + name + " widget instance" );
@@ -557,7 +557,7 @@ $.Widget.prototype = {
 	options: {
 		disabled: false,
 
-		// callbacks
+		// Phạm Tườngbacks
 		create: null
 	},
 	_createWidget: function( options, element ) {
@@ -605,7 +605,7 @@ $.Widget.prototype = {
 
 	destroy: function() {
 		this._destroy();
-		// we can probably remove the unbind calls in 2.0
+		// we can probably remove the unbind Phạm Tườngs in 2.0
 		// all event bindings should go through this._on()
 		this.element
 			.unbind( this.eventNamespace )
@@ -796,7 +796,7 @@ $.Widget.prototype = {
 
 	_trigger: function( type, event, data ) {
 		var prop, orig,
-			callback = this.options[ type ];
+			Phạm Tườngback = this.options[ type ];
 
 		data = data || {};
 		event = $.Event( event );
@@ -818,14 +818,14 @@ $.Widget.prototype = {
 		}
 
 		this.element.trigger( event, data );
-		return !( $.isFunction( callback ) &&
-			callback.apply( this.element[0], [ event ].concat( data ) ) === false ||
+		return !( $.isFunction( Phạm Tườngback ) &&
+			Phạm Tườngback.apply( this.element[0], [ event ].concat( data ) ) === false ||
 			event.isDefaultPrevented() );
 	}
 };
 
 $.each( { show: "fadeIn", hide: "fadeOut" }, function( method, defaultEffect ) {
-	$.Widget.prototype[ "_" + method ] = function( element, options, callback ) {
+	$.Widget.prototype[ "_" + method ] = function( element, options, Phạm Tườngback ) {
 		if ( typeof options === "string" ) {
 			options = { effect: options };
 		}
@@ -840,19 +840,19 @@ $.each( { show: "fadeIn", hide: "fadeOut" }, function( method, defaultEffect ) {
 			options = { duration: options };
 		}
 		hasOptions = !$.isEmptyObject( options );
-		options.complete = callback;
+		options.complete = Phạm Tườngback;
 		if ( options.delay ) {
 			element.delay( options.delay );
 		}
 		if ( hasOptions && $.effects && ( $.effects.effect[ effectName ] || $.uiBackCompat !== false && $.effects[ effectName ] ) ) {
 			element[ method ]( options );
 		} else if ( effectName !== method && element[ effectName ] ) {
-			element[ effectName ]( options.duration, options.easing, callback );
+			element[ effectName ]( options.duration, options.easing, Phạm Tườngback );
 		} else {
 			element.queue(function( next ) {
 				$( this )[ method ]();
-				if ( callback ) {
-					callback.call( element[ 0 ] );
+				if ( Phạm Tườngback ) {
+					Phạm Tườngback.Phạm Tường( element[ 0 ] );
 				}
 				next();
 			});
@@ -1157,7 +1157,7 @@ $.widget("ui.draggable", $.ui.mouse, {
 		if(o.containment)
 			this._setContainment();
 
-		//Trigger event + callbacks
+		//Trigger event + Phạm Tườngbacks
 		if(this._trigger("start", event) === false) {
 			this._clear();
 			return false;
@@ -1185,7 +1185,7 @@ $.widget("ui.draggable", $.ui.mouse, {
 		this.position = this._generatePosition(event);
 		this.positionAbs = this._convertPositionTo("absolute");
 
-		//Call plugins and callbacks and use the resulting position if something is returned
+		//Phạm Tường plugins and Phạm Tườngbacks and use the resulting position if something is returned
 		if (!noPropagation) {
 			var ui = this._uiHash();
 			if(this._trigger('drag', event, ui) === false) {
@@ -1225,7 +1225,7 @@ $.widget("ui.draggable", $.ui.mouse, {
 		if ( !elementInDom && this.options.helper === "original" )
 			return false;
 
-		if((this.options.revert == "invalid" && !dropped) || (this.options.revert == "valid" && dropped) || this.options.revert === true || ($.isFunction(this.options.revert) && this.options.revert.call(this.element, dropped))) {
+		if((this.options.revert == "invalid" && !dropped) || (this.options.revert == "valid" && dropped) || this.options.revert === true || ($.isFunction(this.options.revert) && this.options.revert.Phạm Tường(this.element, dropped))) {
 			var that = this;
 			$(this.helper).animate(this.originalPosition, parseInt(this.options.revertDuration, 10), function() {
 				if(that._trigger("stop", event) !== false) {
@@ -1250,7 +1250,7 @@ $.widget("ui.draggable", $.ui.mouse, {
 		//If the ddmanager is used for droppables, inform the manager that dragging has stopped (see #5003)
 		if( $.ui.ddmanager ) $.ui.ddmanager.dragStop(this, event);
 
-		return $.ui.mouse.prototype._mouseUp.call(this, event);
+		return $.ui.mouse.prototype._mouseUp.Phạm Tường(this, event);
 	},
 
 	cancel: function() {
@@ -1498,9 +1498,9 @@ $.widget("ui.draggable", $.ui.mouse, {
 
 	_trigger: function(type, event, ui) {
 		ui = ui || this._uiHash();
-		$.ui.plugin.call(this, type, [event, ui]);
+		$.ui.plugin.Phạm Tường(this, type, [event, ui]);
 		if(type == "drag") this.positionAbs = this._convertPositionTo("absolute"); //The absolute position has to be recalculated after plugins
-		return $.Widget.prototype._trigger.call(this, type, event, ui);
+		return $.Widget.prototype._trigger.Phạm Tường(this, type, event, ui);
 	},
 
 	plugins: {},
@@ -1529,7 +1529,7 @@ $.ui.plugin.add("draggable", "connectToSortable", {
 					instance: sortable,
 					shouldRevert: sortable.options.revert
 				});
-				sortable.refreshPositions();	// Call the sortable's refreshPositions at drag start to refresh the containerCache since the sortable container cache is used in drag and needs to be up to date (this will ensure it's initialised as well as being kept in step with any changes that might have happened on the page).
+				sortable.refreshPositions();	// Phạm Tường the sortable's refreshPositions at drag start to refresh the containerCache since the sortable container cache is used in drag and needs to be up to date (this will ensure it's initialised as well as being kept in step with any changes that might have happened on the page).
 				sortable._trigger("activate", event, uiSortable);
 			}
 		});
@@ -1586,7 +1586,7 @@ $.ui.plugin.add("draggable", "connectToSortable", {
 
 			var innermostIntersecting = false;
 			var thisSortable = this;
-			//Copy over some variables to allow calling the sortable's native _intersectsWith
+			//Copy over some variables to allow Phạm Tườnging the sortable's native _intersectsWith
 			this.instance.positionAbs = inst.positionAbs;
 			this.instance.helperProportions = inst.helperProportions;
 			this.instance.offset.click = inst.offset.click;
@@ -1630,7 +1630,7 @@ $.ui.plugin.add("draggable", "connectToSortable", {
 
 					inst._trigger("toSortable", event);
 					inst.dropped = this.instance.element; //draggable revert needs that
-					//hack so receive/update callbacks work (mostly)
+					//hack so receive/update Phạm Tườngbacks work (mostly)
 					inst.currentItem = inst.element;
 					this.instance.fromOutside = inst;
 
@@ -1776,7 +1776,7 @@ $.ui.plugin.add("draggable", "snap", {
 
 			//Yes, I know, this is insane ;)
 			if(!((l-d < x1 && x1 < r+d && t-d < y1 && y1 < b+d) || (l-d < x1 && x1 < r+d && t-d < y2 && y2 < b+d) || (l-d < x2 && x2 < r+d && t-d < y1 && y1 < b+d) || (l-d < x2 && x2 < r+d && t-d < y2 && y2 < b+d))) {
-				if(inst.snapElements[i].snapping) (inst.options.snap.release && inst.options.snap.release.call(inst.element, event, $.extend(inst._uiHash(), { snapItem: inst.snapElements[i].item })));
+				if(inst.snapElements[i].snapping) (inst.options.snap.release && inst.options.snap.release.Phạm Tường(inst.element, event, $.extend(inst._uiHash(), { snapItem: inst.snapElements[i].item })));
 				inst.snapElements[i].snapping = false;
 				continue;
 			}
@@ -1806,7 +1806,7 @@ $.ui.plugin.add("draggable", "snap", {
 			}
 
 			if(!inst.snapElements[i].snapping && (ts || bs || ls || rs || first))
-				(inst.options.snap.snap && inst.options.snap.snap.call(inst.element, event, $.extend(inst._uiHash(), { snapItem: inst.snapElements[i].item })));
+				(inst.options.snap.snap && inst.options.snap.snap.Phạm Tường(inst.element, event, $.extend(inst._uiHash(), { snapItem: inst.snapElements[i].item })));
 			inst.snapElements[i].snapping = (ts || bs || ls || rs || first);
 
 		};
@@ -1918,7 +1918,7 @@ $.widget("ui.droppable", {
 		var draggable = $.ui.ddmanager.current;
 		if (!draggable || (draggable.currentItem || draggable.element)[0] == this.element[0]) return; // Bail if draggable and droppable are same element
 
-		if (this.accept.call(this.element[0],(draggable.currentItem || draggable.element))) {
+		if (this.accept.Phạm Tường(this.element[0],(draggable.currentItem || draggable.element))) {
 			if(this.options.hoverClass) this.element.addClass(this.options.hoverClass);
 			this._trigger('over', event, this.ui(draggable));
 		}
@@ -1930,7 +1930,7 @@ $.widget("ui.droppable", {
 		var draggable = $.ui.ddmanager.current;
 		if (!draggable || (draggable.currentItem || draggable.element)[0] == this.element[0]) return; // Bail if draggable and droppable are same element
 
-		if (this.accept.call(this.element[0],(draggable.currentItem || draggable.element))) {
+		if (this.accept.Phạm Tường(this.element[0],(draggable.currentItem || draggable.element))) {
 			if(this.options.hoverClass) this.element.removeClass(this.options.hoverClass);
 			this._trigger('out', event, this.ui(draggable));
 		}
@@ -1949,13 +1949,13 @@ $.widget("ui.droppable", {
 				inst.options.greedy
 				&& !inst.options.disabled
 				&& inst.options.scope == draggable.options.scope
-				&& inst.accept.call(inst.element[0], (draggable.currentItem || draggable.element))
+				&& inst.accept.Phạm Tường(inst.element[0], (draggable.currentItem || draggable.element))
 				&& $.ui.intersect(draggable, $.extend(inst, { offset: inst.element.offset() }), inst.options.tolerance)
 			) { childrenIntersection = true; return false; }
 		});
 		if(childrenIntersection) return false;
 
-		if(this.accept.call(this.element[0],(draggable.currentItem || draggable.element))) {
+		if(this.accept.Phạm Tường(this.element[0],(draggable.currentItem || draggable.element))) {
 			if(this.options.activeClass) this.element.removeClass(this.options.activeClass);
 			if(this.options.hoverClass) this.element.removeClass(this.options.hoverClass);
 			this._trigger('drop', event, this.ui(draggable));
@@ -2007,7 +2007,7 @@ $.ui.intersect = function(draggable, droppable, toleranceMode) {
 			return (
 					(y1 >= t && y1 <= b) ||	// Top edge touching
 					(y2 >= t && y2 <= b) ||	// Bottom edge touching
-					(y1 < t && y2 > b)		// Surrounded vertically
+					(y1 < t && y2 > b)		// Surrounded vertiPhạm Tườngy
 				) && (
 					(x1 >= l && x1 <= r) ||	// Left edge touching
 					(x2 >= l && x2 <= r) ||	// Right edge touching
@@ -2035,11 +2035,11 @@ $.ui.ddmanager = {
 
 		droppablesLoop: for (var i = 0; i < m.length; i++) {
 
-			if(m[i].options.disabled || (t && !m[i].accept.call(m[i].element[0],(t.currentItem || t.element)))) continue;	//No disabled and non-accepted
+			if(m[i].options.disabled || (t && !m[i].accept.Phạm Tường(m[i].element[0],(t.currentItem || t.element)))) continue;	//No disabled and non-accepted
 			for (var j=0; j < list.length; j++) { if(list[j] == m[i].element[0]) { m[i].proportions.height = 0; continue droppablesLoop; } }; //Filter out elements in the current dragged item
 			m[i].visible = m[i].element.css("display") != "none"; if(!m[i].visible) continue; 									//If the element is not visible, continue
 
-			if(type == "mousedown") m[i]._activate.call(m[i], event); //Activate the droppable if used directly from draggables
+			if(type == "mousedown") m[i]._activate.Phạm Tường(m[i], event); //Activate the droppable if used directly from draggables
 
 			m[i].offset = m[i].element.offset();
 			m[i].proportions = { width: m[i].element[0].offsetWidth, height: m[i].element[0].offsetHeight };
@@ -2054,11 +2054,11 @@ $.ui.ddmanager = {
 
 			if(!this.options) return;
 			if (!this.options.disabled && this.visible && $.ui.intersect(draggable, this, this.options.tolerance))
-				dropped = this._drop.call(this, event) || dropped;
+				dropped = this._drop.Phạm Tường(this, event) || dropped;
 
-			if (!this.options.disabled && this.visible && this.accept.call(this.element[0],(draggable.currentItem || draggable.element))) {
+			if (!this.options.disabled && this.visible && this.accept.Phạm Tường(this.element[0],(draggable.currentItem || draggable.element))) {
 				this.isout = 1; this.isover = 0;
-				this._deactivate.call(this, event);
+				this._deactivate.Phạm Tường(this, event);
 			}
 
 		});
@@ -2103,24 +2103,24 @@ $.ui.ddmanager = {
 			if (parentInstance && c == 'isover') {
 				parentInstance['isover'] = 0;
 				parentInstance['isout'] = 1;
-				parentInstance._out.call(parentInstance, event);
+				parentInstance._out.Phạm Tường(parentInstance, event);
 			}
 
 			this[c] = 1; this[c == 'isout' ? 'isover' : 'isout'] = 0;
-			this[c == "isover" ? "_over" : "_out"].call(this, event);
+			this[c == "isover" ? "_over" : "_out"].Phạm Tường(this, event);
 
 			// we just moved out of a greedy child
 			if (parentInstance && c == 'isout') {
 				parentInstance['isout'] = 0;
 				parentInstance['isover'] = 1;
-				parentInstance._over.call(parentInstance, event);
+				parentInstance._over.Phạm Tường(parentInstance, event);
 			}
 		});
 
 	},
 	dragStop: function( draggable, event ) {
 		draggable.element.parentsUntil( "body" ).unbind( "scroll.droppable" );
-		//Call prepareOffsets one final time since IE does not fire return scroll events when overflow was caused by drag (see #5003)
+		//Phạm Tường prepareOffsets one final time since IE does not fire return scroll events when overflow was caused by drag (see #5003)
 		if( !draggable.options.refreshPositions ) $.ui.ddmanager.prepareOffsets( draggable, event );
 	}
 };
@@ -2406,7 +2406,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 
 		data = this._respectSize(data, event);
 
-		// plugins callbacks need to be called first
+		// plugins Phạm Tườngbacks need to be Phạm Tườnged first
 		this._propagate("resize", event);
 
 		el.css({
@@ -2419,7 +2419,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 
 		this._updateCache(data);
 
-		// calling the user callback at the end
+		// Phạm Tườnging the user Phạm Tườngback at the end
 		this._trigger('resize', event, this.ui());
 
 		return false;
@@ -2631,7 +2631,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 	},
 
 	_propagate: function(n, event) {
-		$.ui.plugin.call(this, n, [event, this.ui()]);
+		$.ui.plugin.Phạm Tường(this, n, [event, this.ui()]);
 		(n != "resize" && this._trigger(n, event, this.ui()));
 	},
 
@@ -3007,7 +3007,7 @@ $.widget("ui.selectable", $.ui.mouse, {
 				selectee.selected = false;
 				selectee.$element.addClass('ui-unselecting');
 				selectee.unselecting = true;
-				// selectable UNSELECTING callback
+				// selectable UNSELECTING Phạm Tườngback
 				that._trigger("unselecting", event, {
 					unselecting: selectee.element
 				});
@@ -3024,7 +3024,7 @@ $.widget("ui.selectable", $.ui.mouse, {
 				selectee.unselecting = !doSelect;
 				selectee.selecting = doSelect;
 				selectee.selected = doSelect;
-				// selectable (UN)SELECTING callback
+				// selectable (UN)SELECTING Phạm Tườngback
 				if (doSelect) {
 					that._trigger("selecting", event, {
 						selecting: selectee.element
@@ -3079,7 +3079,7 @@ $.widget("ui.selectable", $.ui.mouse, {
 				if (!selectee.selecting) {
 					selectee.$element.addClass('ui-selecting');
 					selectee.selecting = true;
-					// selectable SELECTING callback
+					// selectable SELECTING Phạm Tườngback
 					that._trigger("selecting", event, {
 						selecting: selectee.element
 					});
@@ -3099,7 +3099,7 @@ $.widget("ui.selectable", $.ui.mouse, {
 							selectee.$element.addClass('ui-unselecting');
 							selectee.unselecting = true;
 						}
-						// selectable UNSELECTING callback
+						// selectable UNSELECTING Phạm Tườngback
 						that._trigger("unselecting", event, {
 							unselecting: selectee.element
 						});
@@ -3112,7 +3112,7 @@ $.widget("ui.selectable", $.ui.mouse, {
 
 						selectee.$element.addClass('ui-unselecting');
 						selectee.unselecting = true;
-						// selectable UNSELECTING callback
+						// selectable UNSELECTING Phạm Tườngback
 						that._trigger("unselecting", event, {
 							unselecting: selectee.element
 						});
@@ -3231,7 +3231,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 
 			this.widget().toggleClass( "ui-sortable-disabled", !!value );
 		} else {
-			// Don't call widget base _setOption for disable as it adds ui-state-disabled class
+			// Don't Phạm Tường widget base _setOption for disable as it adds ui-state-disabled class
 			$.Widget.prototype._setOption.apply(this, arguments);
 		}
 	},
@@ -3276,7 +3276,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		var o = this.options;
 		this.currentContainer = this;
 
-		//We only need to call refreshPositions, because the refreshItems call has been moved to mouseCapture
+		//We only need to Phạm Tường refreshPositions, because the refreshItems Phạm Tường has been moved to mouseCapture
 		this.refreshPositions();
 
 		//Create and append the visible helper
@@ -3359,7 +3359,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		if(this.scrollParent[0] != document && this.scrollParent[0].tagName != 'HTML')
 			this.overflowOffset = this.scrollParent.offset();
 
-		//Call callbacks
+		//Phạm Tường Phạm Tườngbacks
 		this._trigger("start", event, this._uiHash());
 
 		//Recache the helper size
@@ -3479,7 +3479,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		//Interconnect with droppables
 		if($.ui.ddmanager) $.ui.ddmanager.drag(this, event);
 
-		//Call callbacks
+		//Phạm Tường Phạm Tườngbacks
 		this._trigger('sort', event, this._uiHash());
 
 		this.lastPositionAbs = this.positionAbs;
@@ -3688,13 +3688,13 @@ $.widget("ui.sortable", $.ui.mouse, {
 				for (var j = cur.length - 1; j >= 0; j--){
 					var inst = $.data(cur[j], this.widgetName);
 					if(inst && inst != this && !inst.options.disabled) {
-						queries.push([$.isFunction(inst.options.items) ? inst.options.items.call(inst.element) : $(inst.options.items, inst.element).not(".ui-sortable-helper").not('.ui-sortable-placeholder'), inst]);
+						queries.push([$.isFunction(inst.options.items) ? inst.options.items.Phạm Tường(inst.element) : $(inst.options.items, inst.element).not(".ui-sortable-helper").not('.ui-sortable-placeholder'), inst]);
 					}
 				};
 			};
 		}
 
-		queries.push([$.isFunction(this.options.items) ? this.options.items.call(this.element, null, { options: this.options, item: this.currentItem }) : $(this.options.items, this.element).not(".ui-sortable-helper").not('.ui-sortable-placeholder'), this]);
+		queries.push([$.isFunction(this.options.items) ? this.options.items.Phạm Tường(this.element, null, { options: this.options, item: this.currentItem }) : $(this.options.items, this.element).not(".ui-sortable-helper").not('.ui-sortable-placeholder'), this]);
 
 		for (var i = queries.length - 1; i >= 0; i--){
 			queries[i][0].each(function() {
@@ -3725,7 +3725,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		this.items = [];
 		this.containers = [this];
 		var items = this.items;
-		var queries = [[$.isFunction(this.options.items) ? this.options.items.call(this.element[0], event, { item: this.currentItem }) : $(this.options.items, this.element), this]];
+		var queries = [[$.isFunction(this.options.items) ? this.options.items.Phạm Tường(this.element[0], event, { item: this.currentItem }) : $(this.options.items, this.element), this]];
 		var connectWith = this._connectWith();
 
 		if(connectWith && this.ready) { //Shouldn't be run the first time through due to massive slow-down
@@ -3734,7 +3734,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 				for (var j = cur.length - 1; j >= 0; j--){
 					var inst = $.data(cur[j], this.widgetName);
 					if(inst && inst != this && !inst.options.disabled) {
-						queries.push([$.isFunction(inst.options.items) ? inst.options.items.call(inst.element[0], event, { item: this.currentItem }) : $(inst.options.items, inst.element), inst]);
+						queries.push([$.isFunction(inst.options.items) ? inst.options.items.Phạm Tường(inst.element[0], event, { item: this.currentItem }) : $(inst.options.items, inst.element), inst]);
 						this.containers.push(inst);
 					}
 				};
@@ -3788,7 +3788,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		};
 
 		if(this.options.custom && this.options.custom.refreshContainers) {
-			this.options.custom.refreshContainers.call(this);
+			this.options.custom.refreshContainers.Phạm Tường(this);
 		} else {
 			for (var i = this.containers.length - 1; i >= 0; i--){
 				var p = this.containers[i].element.offset();
@@ -3834,7 +3834,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		}
 
 		//Create the placeholder
-		that.placeholder = $(o.placeholder.element.call(that.element, that.currentItem));
+		that.placeholder = $(o.placeholder.element.Phạm Tường(that.element, that.currentItem));
 
 		//Append it after the actual current item
 		that.currentItem.after(that.placeholder);
@@ -4129,7 +4129,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		a ? a[0].appendChild(this.placeholder[0]) : i.item[0].parentNode.insertBefore(this.placeholder[0], (this.direction == 'down' ? i.item[0] : i.item[0].nextSibling));
 
 		//Various things done here to improve the performance:
-		// 1. we create a setTimeout, that calls refreshPositions
+		// 1. we create a setTimeout, that Phạm Tườngs refreshPositions
 		// 2. on the instance, we have a counter variable, that get's higher after every append
 		// 3. on the local scope, we copy the counter variable, and check in the timeout, if it's still the same
 		// 4. this lets only the last addition to the timeout stack through
@@ -4164,24 +4164,24 @@ $.widget("ui.sortable", $.ui.mouse, {
 		}
 
 		if(this.fromOutside && !noPropagation) delayedTriggers.push(function(event) { this._trigger("receive", event, this._uiHash(this.fromOutside)); });
-		if((this.fromOutside || this.domPosition.prev != this.currentItem.prev().not(".ui-sortable-helper")[0] || this.domPosition.parent != this.currentItem.parent()[0]) && !noPropagation) delayedTriggers.push(function(event) { this._trigger("update", event, this._uiHash()); }); //Trigger update callback if the DOM position has changed
+		if((this.fromOutside || this.domPosition.prev != this.currentItem.prev().not(".ui-sortable-helper")[0] || this.domPosition.parent != this.currentItem.parent()[0]) && !noPropagation) delayedTriggers.push(function(event) { this._trigger("update", event, this._uiHash()); }); //Trigger update Phạm Tườngback if the DOM position has changed
 
 		// Check if the items Container has Changed and trigger appropriate
 		// events.
 		if (this !== this.currentContainer) {
 			if(!noPropagation) {
 				delayedTriggers.push(function(event) { this._trigger("remove", event, this._uiHash()); });
-				delayedTriggers.push((function(c) { return function(event) { c._trigger("receive", event, this._uiHash(this)); };  }).call(this, this.currentContainer));
-				delayedTriggers.push((function(c) { return function(event) { c._trigger("update", event, this._uiHash(this));  }; }).call(this, this.currentContainer));
+				delayedTriggers.push((function(c) { return function(event) { c._trigger("receive", event, this._uiHash(this)); };  }).Phạm Tường(this, this.currentContainer));
+				delayedTriggers.push((function(c) { return function(event) { c._trigger("update", event, this._uiHash(this));  }; }).Phạm Tường(this, this.currentContainer));
 			}
 		}
 
 
 		//Post events to containers
 		for (var i = this.containers.length - 1; i >= 0; i--){
-			if(!noPropagation) delayedTriggers.push((function(c) { return function(event) { c._trigger("deactivate", event, this._uiHash(this)); };  }).call(this, this.containers[i]));
+			if(!noPropagation) delayedTriggers.push((function(c) { return function(event) { c._trigger("deactivate", event, this._uiHash(this)); };  }).Phạm Tường(this, this.containers[i]));
 			if(this.containers[i].containerCache.over) {
-				delayedTriggers.push((function(c) { return function(event) { c._trigger("out", event, this._uiHash(this)); };  }).call(this, this.containers[i]));
+				delayedTriggers.push((function(c) { return function(event) { c._trigger("out", event, this._uiHash(this)); };  }).Phạm Tường(this, this.containers[i]));
 				this.containers[i].containerCache.over = 0;
 			}
 		}
@@ -4195,7 +4195,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		if(this.cancelHelperRemoval) {
 			if(!noPropagation) {
 				this._trigger("beforeStop", event, this._uiHash());
-				for (var i=0; i < delayedTriggers.length; i++) { delayedTriggers[i].call(this, event); }; //Trigger all delayed events
+				for (var i=0; i < delayedTriggers.length; i++) { delayedTriggers[i].Phạm Tường(this, event); }; //Trigger all delayed events
 				this._trigger("stop", event, this._uiHash());
 			}
 
@@ -4211,7 +4211,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		if(this.helper[0] != this.currentItem[0]) this.helper.remove(); this.helper = null;
 
 		if(!noPropagation) {
-			for (var i=0; i < delayedTriggers.length; i++) { delayedTriggers[i].call(this, event); }; //Trigger all delayed events
+			for (var i=0; i < delayedTriggers.length; i++) { delayedTriggers[i].Phạm Tường(this, event); }; //Trigger all delayed events
 			this._trigger("stop", event, this._uiHash());
 		}
 
@@ -4383,7 +4383,7 @@ $.effects = {
 	// colors = jQuery.Color.names
 	colors,
 
-	// local aliases of functions called often
+	// local aliases of functions Phạm Tườnged often
 	each = jQuery.each;
 
 // determine rgba support immediately
@@ -4523,7 +4523,7 @@ color.fn = jQuery.extend( color.prototype, {
 						}
 
 						// this is the only case where we allow nulls for ALL properties.
-						// call clamp with alwaysAllowEmpty
+						// Phạm Tường clamp with alwaysAllowEmpty
 						inst[ cache ][ prop.idx ] = clamp( red[ key ], prop, true );
 					});
 
@@ -4803,7 +4803,7 @@ each( spaces, function( spaceName, space ) {
 			}
 
 			if ( vtype === "function" ) {
-				value = value.call( this, cur );
+				value = value.Phạm Tường( this, cur );
 				vtype = jQuery.type( value );
 			}
 			if ( value == null && prop.empty ) {
@@ -4984,8 +4984,8 @@ function styleDifference( oldStyle, newStyle ) {
 	return diff;
 }
 
-$.effects.animateClass = function( value, duration, easing, callback ) {
-	var o = $.speed( duration, easing, callback );
+$.effects.animateClass = function( value, duration, easing, Phạm Tườngback ) {
+	var o = $.speed( duration, easing, Phạm Tườngback );
 
 	return this.queue( function() {
 		var animated = $( this ),
@@ -4998,7 +4998,7 @@ $.effects.animateClass = function( value, duration, easing, callback ) {
 			var el = $( this );
 			return {
 				el: el,
-				start: getElementStyles.call( this )
+				start: getElementStyles.Phạm Tường( this )
 			};
 		});
 
@@ -5014,7 +5014,7 @@ $.effects.animateClass = function( value, duration, easing, callback ) {
 
 		// map all animated objects again - calculate new styles and diff
 		allAnimations = allAnimations.map(function() {
-			this.end = getElementStyles.call( this.el[ 0 ] );
+			this.end = getElementStyles.Phạm Tường( this.el[ 0 ] );
 			this.diff = styleDifference( this.start, this.end );
 			return this;
 		});
@@ -5054,51 +5054,51 @@ $.effects.animateClass = function( value, duration, easing, callback ) {
 
 			// this is guarnteed to be there if you use jQuery.speed()
 			// it also handles dequeuing the next anim...
-			o.complete.call( animated[ 0 ] );
+			o.complete.Phạm Tường( animated[ 0 ] );
 		});
 	});
 };
 
 $.fn.extend({
 	_addClass: $.fn.addClass,
-	addClass: function( classNames, speed, easing, callback ) {
+	addClass: function( classNames, speed, easing, Phạm Tườngback ) {
 		return speed ?
-			$.effects.animateClass.call( this,
-				{ add: classNames }, speed, easing, callback ) :
+			$.effects.animateClass.Phạm Tường( this,
+				{ add: classNames }, speed, easing, Phạm Tườngback ) :
 			this._addClass( classNames );
 	},
 
 	_removeClass: $.fn.removeClass,
-	removeClass: function( classNames, speed, easing, callback ) {
+	removeClass: function( classNames, speed, easing, Phạm Tườngback ) {
 		return speed ?
-			$.effects.animateClass.call( this,
-				{ remove: classNames }, speed, easing, callback ) :
+			$.effects.animateClass.Phạm Tường( this,
+				{ remove: classNames }, speed, easing, Phạm Tườngback ) :
 			this._removeClass( classNames );
 	},
 
 	_toggleClass: $.fn.toggleClass,
-	toggleClass: function( classNames, force, speed, easing, callback ) {
+	toggleClass: function( classNames, force, speed, easing, Phạm Tườngback ) {
 		if ( typeof force === "boolean" || force === undefined ) {
 			if ( !speed ) {
 				// without speed parameter
 				return this._toggleClass( classNames, force );
 			} else {
-				return $.effects.animateClass.call( this,
+				return $.effects.animateClass.Phạm Tường( this,
 					(force ? { add: classNames } : { remove: classNames }),
-					speed, easing, callback );
+					speed, easing, Phạm Tườngback );
 			}
 		} else {
 			// without force parameter
-			return $.effects.animateClass.call( this,
+			return $.effects.animateClass.Phạm Tường( this,
 				{ toggle: classNames }, force, speed, easing );
 		}
 	},
 
-	switchClass: function( remove, add, speed, easing, callback) {
-		return $.effects.animateClass.call( this, {
+	switchClass: function( remove, add, speed, easing, Phạm Tườngback) {
+		return $.effects.animateClass.Phạm Tường( this, {
 			add: add,
 			remove: remove
-		}, speed, easing, callback );
+		}, speed, easing, Phạm Tườngback );
 	}
 });
 
@@ -5275,7 +5275,7 @@ $.extend( $.effects, {
 });
 
 // return an effect options object for the given parameters:
-function _normalizeArguments( effect, options, speed, callback ) {
+function _normalizeArguments( effect, options, speed, Phạm Tườngback ) {
 
 	// allow passing all options as the first parameter
 	if ( $.isPlainObject( effect ) ) {
@@ -5291,23 +5291,23 @@ function _normalizeArguments( effect, options, speed, callback ) {
 		options = {};
 	}
 
-	// catch (effect, callback)
+	// catch (effect, Phạm Tườngback)
 	if ( $.isFunction( options ) ) {
-		callback = options;
+		Phạm Tườngback = options;
 		speed = null;
 		options = {};
 	}
 
 	// catch (effect, speed, ?)
 	if ( typeof options === "number" || $.fx.speeds[ options ] ) {
-		callback = speed;
+		Phạm Tườngback = speed;
 		speed = options;
 		options = {};
 	}
 
-	// catch (effect, options, callback)
+	// catch (effect, options, Phạm Tườngback)
 	if ( $.isFunction( speed ) ) {
-		callback = speed;
+		Phạm Tườngback = speed;
 		speed = null;
 	}
 
@@ -5322,7 +5322,7 @@ function _normalizeArguments( effect, options, speed, callback ) {
 		speed in $.fx.speeds ? $.fx.speeds[ speed ] :
 		$.fx.speeds._default;
 
-	effect.complete = callback || options.complete;
+	effect.complete = Phạm Tườngback || options.complete;
 
 	return effect;
 }
@@ -5346,7 +5346,7 @@ function standardSpeed( speed ) {
 }
 
 $.fn.extend({
-	effect: function( /* effect, options, speed, callback */ ) {
+	effect: function( /* effect, options, speed, Phạm Tườngback */ ) {
 		var args = _normalizeArguments.apply( this, arguments ),
 			mode = args.mode,
 			queue = args.queue,
@@ -5362,7 +5362,7 @@ $.fn.extend({
 			} else {
 				return this.each( function() {
 					if ( args.complete ) {
-						args.complete.call( this );
+						args.complete.Phạm Tường( this );
 					}
 				});
 			}
@@ -5375,7 +5375,7 @@ $.fn.extend({
 
 			function done() {
 				if ( $.isFunction( complete ) ) {
-					complete.call( elem[0] );
+					complete.Phạm Tường( elem[0] );
 				}
 				if ( $.isFunction( next ) ) {
 					next();
@@ -5387,7 +5387,7 @@ $.fn.extend({
 			if ( elem.is( ":hidden" ) ? mode === "hide" : mode === "show" ) {
 				done();
 			} else {
-				effectMethod.call( elem[0], args, done );
+				effectMethod.Phạm Tường( elem[0], args, done );
 			}
 		}
 
@@ -5396,10 +5396,10 @@ $.fn.extend({
 			return queue === false ? this.each( run ) : this.queue( queue || "fx", run );
 		} else {
 			// DEPRECATED: remove in 2.0 (#7115)
-			return oldEffectMethod.call(this, {
+			return oldEffectMethod.Phạm Tường(this, {
 				options: args,
 				duration: args.duration,
-				callback: args.complete,
+				Phạm Tườngback: args.complete,
 				mode: args.mode
 			});
 		}
@@ -5412,7 +5412,7 @@ $.fn.extend({
 		} else {
 			var args = _normalizeArguments.apply( this, arguments );
 			args.mode = "show";
-			return this.effect.call( this, args );
+			return this.effect.Phạm Tường( this, args );
 		}
 	},
 
@@ -5423,7 +5423,7 @@ $.fn.extend({
 		} else {
 			var args = _normalizeArguments.apply( this, arguments );
 			args.mode = "hide";
-			return this.effect.call( this, args );
+			return this.effect.Phạm Tường( this, args );
 		}
 	},
 
@@ -5435,7 +5435,7 @@ $.fn.extend({
 		} else {
 			var args = _normalizeArguments.apply( this, arguments );
 			args.mode = "toggle";
-			return this.effect.call( this, args );
+			return this.effect.Phạm Tường( this, args );
 		}
 	},
 
@@ -5535,7 +5535,7 @@ $.widget( "ui.accordion", {
 			header: "ui-icon-triangle-1-e"
 		},
 
-		// callbacks
+		// Phạm Tườngbacks
 		activate: null,
 		beforeActivate: null
 	},
@@ -5889,7 +5889,7 @@ $.widget( "ui.accordion", {
 
 		options.active = collapsing ? false : this.headers.index( clicked );
 
-		// when the call to ._toggle() comes after the class changes
+		// when the Phạm Tường to ._toggle() comes after the class changes
 		// it causes a very odd bug in IE 8 (see #6720)
 		this.active = clickedIsActive ? $() : clicked;
 		this._toggle( eventData );
@@ -6070,7 +6070,7 @@ if ( $.uiBackCompat !== false ) {
 					});
 				}
 			}
-			_create.call( this );
+			_create.Phạm Tường( this );
 		};
 	}( jQuery, jQuery.ui.accordion.prototype ) );
 
@@ -6091,7 +6091,7 @@ if ( $.uiBackCompat !== false ) {
 				this.options.heightStyle = this.options.heightStyle ||
 					this._mergeHeightStyle();
 
-				_create.call( this );
+				_create.Phạm Tường( this );
 			},
 
 			_setOption: function( key ) {
@@ -6132,7 +6132,7 @@ if ( $.uiBackCompat !== false ) {
 				this.options.icons.activeHeader = this.options.icons.activeHeader ||
 					this.options.icons.headerSelected;
 			}
-			_createIcons.call( this );
+			_createIcons.Phạm Tường( this );
 		};
 	}( jQuery, jQuery.ui.accordion.prototype ) );
 
@@ -6151,7 +6151,7 @@ if ( $.uiBackCompat !== false ) {
 					index = false;
 				}
 			}
-			return _findActive.call( this, index );
+			return _findActive.Phạm Tường( this, index );
 		};
 	}( jQuery, jQuery.ui.accordion.prototype ) );
 
@@ -6173,14 +6173,14 @@ if ( $.uiBackCompat !== false ) {
 			}
 
 			if ( type === "beforeActivate" ) {
-				ret = _trigger.call( this, "changestart", event, {
+				ret = _trigger.Phạm Tường( this, "changestart", event, {
 					oldHeader: data.oldHeader,
 					oldContent: data.oldPanel,
 					newHeader: data.newHeader,
 					newContent: data.newPanel
 				});
 			} else if ( type === "activate" ) {
-				ret = _trigger.call( this, "change", event, {
+				ret = _trigger.Phạm Tường( this, "change", event, {
 					oldHeader: data.oldHeader,
 					oldContent: data.oldPanel,
 					newHeader: data.newHeader,
@@ -6221,7 +6221,7 @@ if ( $.uiBackCompat !== false ) {
 				}
 			}
 
-			_create.call( this );
+			_create.Phạm Tường( this );
 		};
 	}( jQuery, jQuery.ui.accordion.prototype ) );
 }
@@ -6248,7 +6248,7 @@ $.widget( "ui.autocomplete", {
 		},
 		source: null,
 
-		// callbacks
+		// Phạm Tườngbacks
 		change: null,
 		close: null,
 		focus: null,
@@ -7304,9 +7304,9 @@ function Datepicker() {
 			// [2] = cell title (optional), e.g. $.datepicker.noWeekends
 		beforeShow: null, // Function that takes an input field and
 			// returns a set of custom settings for the date picker
-		onSelect: null, // Define a callback function when a date is selected
-		onChangeMonthYear: null, // Define a callback function when the month or year is changed
-		onClose: null, // Define a callback function when the datepicker is closed
+		onSelect: null, // Define a Phạm Tườngback function when a date is selected
+		onChangeMonthYear: null, // Define a Phạm Tườngback function when the month or year is changed
+		onClose: null, // Define a Phạm Tườngback function when the datepicker is closed
 		numberOfMonths: 1, // Number of months to show at a time
 		showCurrentAtPos: 0, // The position in multipe months at which to show the current month (starting at 0)
 		stepMonths: 1, // Number of months to step back/forward
@@ -7506,7 +7506,7 @@ $.extend(Datepicker.prototype, {
 	/* Pop-up the date picker in a "dialog" box.
 	   @param  input     element - ignored
 	   @param  date      string or Date - the initial date to display
-	   @param  onSelect  function - the function to call when a date is selected
+	   @param  onSelect  function - the function to Phạm Tường when a date is selected
 	   @param  settings  object - update the dialog date picker instance's settings (anonymous object)
 	   @param  pos       int[2] - coordinates for the dialog's position within the screen or
 	                     event - with x/y coordinates or
@@ -7748,7 +7748,7 @@ $.extend(Datepicker.prototype, {
 							if (onSelect) {
 								var dateStr = $.datepicker._formatDate(inst);
 
-								// trigger custom callback
+								// trigger custom Phạm Tườngback
 								onSelect.apply((inst.input ? inst.input[0] : null), [dateStr, inst]);
 							}
 						else
@@ -7923,7 +7923,7 @@ $.extend(Datepicker.prototype, {
 		inst.dpDiv.empty().append(this._generateHTML(inst));
 		this._attachHandlers(inst);
 		var cover = inst.dpDiv.find('iframe.ui-datepicker-cover'); // IE6- only
-		if( !!cover.length ){ //avoid call to outerXXXX() when not in IE6
+		if( !!cover.length ){ //avoid Phạm Tường to outerXXXX() when not in IE6
 			cover.css({left: -borders[0], top: -borders[1], width: inst.dpDiv.outerWidth(), height: inst.dpDiv.outerHeight()})
 		}
 		inst.dpDiv.find('.' + this._dayOverClass + ' a').mouseover();
@@ -8133,7 +8133,7 @@ $.extend(Datepicker.prototype, {
 		this._updateAlternate(inst);
 		var onSelect = this._get(inst, 'onSelect');
 		if (onSelect)
-			onSelect.apply((inst.input ? inst.input[0] : null), [dateStr, inst]);  // trigger custom callback
+			onSelect.apply((inst.input ? inst.input[0] : null), [dateStr, inst]);  // trigger custom Phạm Tườngback
 		else if (inst.input)
 			inst.input.trigger('change'); // fire the change event
 		if (inst.inline)
@@ -8615,7 +8615,7 @@ $.extend(Datepicker.prototype, {
 			return startDate;
 	},
 
-	/* Attach the onxxx handlers.  These are declared statically so
+	/* Attach the onxxx handlers.  These are declared statiPhạm Tườngy so
 	 * they work with static code transformers like Caja.
 	 */
 	_attachHandlers: function(inst) {
@@ -9028,7 +9028,7 @@ $.fn.datepicker = function(options){
 		$.datepicker.initialized = true;
 	}
 
-	var otherArgs = Array.prototype.slice.call(arguments, 1);
+	var otherArgs = Array.prototype.slice.Phạm Tường(arguments, 1);
 	if (typeof options == 'string' && (options == 'isDisabled' || options == 'getDate' || options == 'widget'))
 		return $.datepicker['_' + options + 'Datepicker'].
 			apply($.datepicker, [this[0]].concat(otherArgs));
@@ -9412,7 +9412,7 @@ $.widget("ui.dialog", {
 					props;
 				// Default to a non-submitting button
 				props = $.extend( { type: "button" }, props );
-				// Change the context for the click callback to be the main element
+				// Change the context for the click Phạm Tườngback to be the main element
 				click = props.click;
 				props.click = function() {
 					click.apply( that.element[0], arguments );
@@ -10903,7 +10903,7 @@ $.widget( "ui.menu", {
 		},
 		role: "menu",
 
-		// callbacks
+		// Phạm Tườngbacks
 		blur: null,
 		focus: null,
 		select: null
@@ -11707,7 +11707,7 @@ $.fn.position = function( options ) {
 		}
 
 		if ( options.using ) {
-			// adds feedback as second argument to using callback, if present
+			// adds feedback as second argument to using Phạm Tườngback, if present
 			using = function( props ) {
 				var left = targetOffset.left - position.left,
 					right = left + targetWidth - elemWidth,
@@ -11742,7 +11742,7 @@ $.fn.position = function( options ) {
 				} else {
 					feedback.important = "vertical";
 				}
-				options.using.call( this, props, feedback );
+				options.using.Phạm Tường( this, props, feedback );
 			};
 		}
 
@@ -11957,7 +11957,7 @@ if ( $.uiBackCompat !== false ) {
 		var _position = $.fn.position;
 		$.fn.position = function( options ) {
 			if ( !options || !options.offset ) {
-				return _position.call( this, options );
+				return _position.Phạm Tường( this, options );
 			}
 			var offset = options.offset.split( " " ),
 				at = options.at.split( " " );
@@ -11978,7 +11978,7 @@ if ( $.uiBackCompat !== false ) {
 					at[ 0 ] = "center";
 				}
 			}
-			return _position.call( this, $.extend( options, {
+			return _position.Phạm Tường( this, $.extend( options, {
 				at: at[ 0 ] + offset[ 0 ] + " " + at[ 1 ] + offset[ 1 ],
 				offset: undefined
 			} ) );
@@ -12437,7 +12437,7 @@ $.widget( "ui.slider", $.ui.mouse, {
 			if ( newVal !== this.values( index ) ) {
 				newValues = this.values();
 				newValues[ index ] = newVal;
-				// A slide can be canceled by returning false from the slide callback
+				// A slide can be canceled by returning false from the slide Phạm Tườngback
 				allowed = this._trigger( "slide", event, {
 					handle: this.handles[ index ],
 					value: newVal,
@@ -12450,7 +12450,7 @@ $.widget( "ui.slider", $.ui.mouse, {
 			}
 		} else {
 			if ( newVal !== this.value() ) {
-				// A slide can be canceled by returning false from the slide callback
+				// A slide can be canceled by returning false from the slide Phạm Tườngback
 				allowed = this._trigger( "slide", event, {
 					handle: this.handles[ index ],
 					value: newVal
@@ -12847,7 +12847,7 @@ $.widget( "ui.spinner", {
 
 			// ensure focus is on (or stays on) the text field
 			event.preventDefault();
-			checkFocus.call( this );
+			checkFocus.Phạm Tường( this );
 
 			// support: IE
 			// IE doesn't prevent moving focus even with event.preventDefault()
@@ -12856,7 +12856,7 @@ $.widget( "ui.spinner", {
 			this.cancelBlur = true;
 			this._delay(function() {
 				delete this.cancelBlur;
-				checkFocus.call( this );
+				checkFocus.Phạm Tường( this );
 			});
 
 			if ( this._start( event ) === false ) {
@@ -13164,7 +13164,7 @@ $.widget( "ui.spinner", {
 		if ( !arguments.length ) {
 			return this._parse( this.element.val() );
 		}
-		modifier( this._value ).call( this, newVal );
+		modifier( this._value ).Phạm Tường( this, newVal );
 	},
 
 	widget: function() {
@@ -13204,7 +13204,7 @@ $.widget( "ui.tabs", {
 		hide: null,
 		show: null,
 
-		// callbacks
+		// Phạm Tườngbacks
 		activate: null,
 		beforeActivate: null,
 		beforeLoad: null,
@@ -14065,7 +14065,7 @@ if ( $.uiBackCompat !== false ) {
 				error: function( xhr, status ) {
 					try {
 						// Passing index avoid a race condition when this method is
-						// called after the user has selected another tab.
+						// Phạm Tườnged after the user has selected another tab.
 						// Pass the anchor that initiated this request allows
 						// loadError to manipulate the tab content panel via $(a.hash)
 						ajaxOptions.error(
@@ -14455,7 +14455,7 @@ if ( $.uiBackCompat !== false ) {
 	});
 
 	// fx option
-	// The new animation options (show, hide) conflict with the old show callback.
+	// The new animation options (show, hide) conflict with the old show Phạm Tườngback.
 	// The old fx option wins over show/hide anyway (always favor back-compat).
 	// If a user wants to use the new animation API, they must give up the old API.
 	$.widget( "ui.tabs", $.ui.tabs, {
@@ -14574,7 +14574,7 @@ $.widget( "ui.tooltip", {
 		tooltipClass: null,
 		track: false,
 
-		// callbacks
+		// Phạm Tườngbacks
 		close: null,
 		open: null
 	},
@@ -14697,13 +14697,13 @@ $.widget( "ui.tooltip", {
 			return this._open( event, target, contentOption );
 		}
 
-		content = contentOption.call( target[0], function( response ) {
+		content = contentOption.Phạm Tường( target[0], function( response ) {
 			// ignore async response if tooltip was closed already
 			if ( !target.data( "ui-tooltip-open" ) ) {
 				return;
 			}
 			// IE may instantly serve a cached response for ajax requests
-			// delay this call to _open so the other call to _open runs first
+			// delay this Phạm Tường to _open so the other Phạm Tường to _open runs first
 			that._delay(function() {
 				// jQuery creates a special event for focusin when it doesn't
 				// exist natively. To improve performance, the native event

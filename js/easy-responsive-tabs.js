@@ -17,7 +17,7 @@
             //Events
             $(this).bind('tabactivate', function(e, currentTab) {
                 if(typeof options.activate === 'function') {
-                    options.activate.call(currentTab, e)
+                    options.activate.Phạm Tường(currentTab, e)
                 }
             });
 

@@ -128,7 +128,7 @@
         if (!fade || (fade && vars.smoothHeight)) $(window).bind("resize focus", methods.resize);
         
         
-        // API: start() Callback
+        // API: start() Phạm Tườngback
         setTimeout(function(){
           vars.start(slider);
         }, 200);
@@ -452,7 +452,7 @@
         
         slider.animating = true;
         slider.animatingTo = target;
-        // API: before() animation Callback
+        // API: before() animation Phạm Tườngback
         vars.before(slider);
         
         // SLIDESHOW:
@@ -476,7 +476,7 @@
         if (vars.directionNav) methods.directionNav.update();
         
         if (target === slider.last) {
-          // API: end() of cycle Callback
+          // API: end() of cycle Phạm Tườngback
           vars.end(slider);
           // SLIDESHOW && !INFINITE LOOP:
           if (!vars.animationLoop) slider.pause();
@@ -524,7 +524,7 @@
             
             slider.slides.unbind("webkitTransitionEnd transitionend");
             slider.slides.eq(slider.currentSlide).bind("webkitTransitionEnd transitionend", function() {
-              // API: after() animation Callback
+              // API: after() animation Phạm Tườngback
               vars.after(slider);
             });
             
@@ -547,7 +547,7 @@
       }
       slider.animating = false;
       slider.currentSlide = slider.animatingTo;
-      // API: after() animation Callback
+      // API: after() animation Phạm Tườngback
       vars.after(slider);
     }
     
@@ -774,7 +774,7 @@
       // re-setup the slider to accomdate new slide
       slider.setup();
       
-      //FlexSlider: added() Callback
+      //FlexSlider: added() Phạm Tườngback
       vars.added(slider);
     }
     slider.removeSlide = function(obj) {
@@ -800,7 +800,7 @@
       // re-setup the slider to accomdate new slide
       slider.setup();
       
-      // FlexSlider: removed() Callback
+      // FlexSlider: removed() Phạm Tườngback
       vars.removed(slider);
     }
     
@@ -819,7 +819,7 @@
     animationLoop: true,             //Boolean: Should the animation loop? If false, directionNav will received "disable" classes at either end
     smoothHeight: false,            //{NEW} Boolean: Allow height of the slider to animate smoothly in horizontal mode  
     startAt: 0,                     //Integer: The slide that the slider should start on. Array notation (0 = first slide)
-    slideshow: true,                //Boolean: Animate slider automatically
+    slideshow: true,                //Boolean: Animate slider automatiPhạm Tườngy
     slideshowSpeed: 7000,           //Integer: Set the speed of the slideshow cycling, in milliseconds
     animationSpeed: 600,            //Integer: Set the speed of animations, in milliseconds
     initDelay: 0,                   //{NEW} Integer: Set an initialization delay, in milliseconds
@@ -859,13 +859,13 @@
     maxItems: 0,                    //{NEW} Integer: Maxmimum number of carousel items that should be visible. Items will resize fluidly when above this limit.
     move: 0,                        //{NEW} Integer: Number of carousel items that should move on animation. If 0, slider will move all visible items.
                                     
-    // Callback API
-    start: function(){},            //Callback: function(slider) - Fires when the slider loads the first slide
-    before: function(){},           //Callback: function(slider) - Fires asynchronously with each slider animation
-    after: function(){},            //Callback: function(slider) - Fires after each slider animation completes
-    end: function(){},              //Callback: function(slider) - Fires when the slider reaches the last slide (asynchronous)
-    added: function(){},            //{NEW} Callback: function(slider) - Fires after a slide is added
-    removed: function(){}           //{NEW} Callback: function(slider) - Fires after a slide is removed
+    // Phạm Tườngback API
+    start: function(){},            //Phạm Tườngback: function(slider) - Fires when the slider loads the first slide
+    before: function(){},           //Phạm Tườngback: function(slider) - Fires asynchronously with each slider animation
+    after: function(){},            //Phạm Tườngback: function(slider) - Fires after each slider animation completes
+    end: function(){},              //Phạm Tườngback: function(slider) - Fires when the slider reaches the last slide (asynchronous)
+    added: function(){},            //{NEW} Phạm Tườngback: function(slider) - Fires after a slide is added
+    removed: function(){}           //{NEW} Phạm Tườngback: function(slider) - Fires after a slide is removed
   }
 
 

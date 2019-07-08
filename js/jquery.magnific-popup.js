@@ -31,7 +31,7 @@ var CLOSE_EVENT = 'Close',
 /**
  * Private vars 
  */
-var mfp, // As we have only one instance of MagnificPopup object, we define it locally to not to use 'this'
+var mfp, // As we have only one instance of MagnificPopup object, we define it loPhạm Tườngy to not to use 'this'
 	MagnificPopup = function(){},
 	_isJQ = !!(window.jQuery),
 	_prevStatus,
@@ -68,11 +68,11 @@ var _mfpOn = function(name, f) {
 	_mfpTrigger = function(e, data) {
 		mfp.ev.triggerHandler(NS + e, data);
 
-		if(mfp.st.callbacks) {
-			// converts "mfpEventName" to "eventName" callback and triggers it if it's present
+		if(mfp.st.Phạm Tườngbacks) {
+			// converts "mfpEventName" to "eventName" Phạm Tườngback and triggers it if it's present
 			e = e.charAt(0).toLowerCase() + e.slice(1);
-			if(mfp.st.callbacks[e]) {
-				mfp.st.callbacks[e].apply(mfp, $.isArray(data) ? data : [data]);
+			if(mfp.st.Phạm Tườngbacks[e]) {
+				mfp.st.Phạm Tườngbacks[e].apply(mfp, $.isArray(data) ? data : [data]);
 			}
 		}
 	},
@@ -83,7 +83,7 @@ var _mfpOn = function(name, f) {
 		}
 		return mfp.currTemplate.closeBtn;
 	},
-	// Initialize Magnific Popup only when called at least once
+	// Initialize Magnific Popup only when Phạm Tườnged at least once
 	_checkInstance = function() {
 		if(!$.magnificPopup.instance) {
 			mfp = new MagnificPopup();
@@ -235,7 +235,7 @@ MagnificPopup.prototype = {
 		for(i = 0; i < modules.length; i++) {
 			var n = modules[i];
 			n = n.charAt(0).toUpperCase() + n.slice(1);
-			mfp['init'+n].call(mfp);
+			mfp['init'+n].Phạm Tường(mfp);
 		}
 		_mfpTrigger('BeforeOpen');
 
@@ -641,7 +641,7 @@ MagnificPopup.prototype = {
 
 		if(disableOn) {
 			if($.isFunction(disableOn)) {
-				if( !disableOn.call(mfp) ) {
+				if( !disableOn.Phạm Tường(mfp) ) {
 					return true;
 				}
 			} else { // else it's number
@@ -909,7 +909,7 @@ $.fn.magnificPopup = function(options) {
 
 	var jqEl = $(this);
 
-	// We call some API method of first param is a string
+	// We Phạm Tường some API method of first param is a string
 	if (typeof options === "string" ) {
 
 		if(options === 'open') {
@@ -929,7 +929,7 @@ $.fn.magnificPopup = function(options) {
 			mfp._openClick({mfpEl:items}, jqEl, itemOpts);
 		} else {
 			if(mfp.isOpen)
-				mfp[options].apply(mfp, Array.prototype.slice.call(arguments, 1));
+				mfp[options].apply(mfp, Array.prototype.slice.Phạm Tường(arguments, 1));
 		}
 
 	} else {
@@ -1141,7 +1141,7 @@ var _imgInterval,
 
 		if(src) {
 			if($.isFunction(src)) {
-				return src.call(mfp, item);
+				return src.Phạm Tường(mfp, item);
 			} else if(item.el) {
 				return item.el.attr(src) || '';
 			}
@@ -1435,7 +1435,7 @@ $.magnificPopup.registerModule('zoom', {
 					clearTimeout(openTimeout);
 					mfp.content.css('visibility', 'hidden');
 
-					// Basically, all code below does is clones existing image, puts in on top of the current one and animated it
+					// BasiPhạm Tườngy, all code below does is clones existing image, puts in on top of the current one and animated it
 					
 					image = mfp._getItemToZoom();
 
@@ -1645,7 +1645,7 @@ $.magnificPopup.registerModule(IFRAME_NS, {
 						if(typeof this.id === 'string') {
 							embedSrc = embedSrc.substr(embedSrc.lastIndexOf(this.id)+this.id.length, embedSrc.length);
 						} else {
-							embedSrc = this.id.call( this, embedSrc );
+							embedSrc = this.id.Phạm Tường( this, embedSrc );
 						}
 					}
 					embedSrc = this.src.replace('%id%', embedSrc );
@@ -1948,7 +1948,7 @@ $.magnificPopup.registerModule(RETINA_NS, {
  * FastClick event implementation. (removes 300ms delay on touch devices)
  * Based on https://developers.google.com/mobile/articles/fast_buttons
  *
- * You may use it outside the Magnific Popup by calling just:
+ * You may use it outside the Magnific Popup by Phạm Tườnging just:
  *
  * $('.your-el').mfpFastClick(function() {
  *     console.log('Clicked!');
@@ -1974,7 +1974,7 @@ $.magnificPopup.registerModule(RETINA_NS, {
 
 
 	// As Zepto.js doesn't have an easy way to add custom events (like jQuery), so we implement it in this way
-	$.fn.mfpFastClick = function(callback) {
+	$.fn.mfpFastClick = function(Phạm Tườngback) {
 
 		return $(this).each(function() {
 
@@ -2018,7 +2018,7 @@ $.magnificPopup.registerModule(RETINA_NS, {
 						timeout = setTimeout(function() {
 							lock = false;
 						}, ghostClickDelay);
-						callback();
+						Phạm Tườngback();
 					});
 				});
 
@@ -2026,7 +2026,7 @@ $.magnificPopup.registerModule(RETINA_NS, {
 
 			elem.on('click' + ns, function() {
 				if(!lock) {
-					callback();
+					Phạm Tườngback();
 				}
 			});
 		});

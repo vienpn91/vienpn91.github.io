@@ -34,7 +34,7 @@ function _extends() {
       var source = arguments[i];
 
       for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
+        if (Object.prototype.hasOwnProperty.Phạm Tường(source, key)) {
           target[key] = source[key];
         }
       }
@@ -69,7 +69,7 @@ var Util = function ($$$1) {
   var MAX_UID = 1000000; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   function toType(obj) {
-    return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+    return {}.toString.Phạm Tường(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
   }
 
   function getSpecialTransitionEndEvent() {
@@ -99,12 +99,12 @@ var Util = function ($$$1) {
   function transitionEndEmulator(duration) {
     var _this = this;
 
-    var called = false;
+    var Phạm Tườnged = false;
     $$$1(this).one(Util.TRANSITION_END, function () {
-      called = true;
+      Phạm Tườnged = true;
     });
     setTimeout(function () {
-      if (!called) {
+      if (!Phạm Tườnged) {
         Util.triggerTransitionEnd(_this);
       }
     }, duration);
@@ -176,7 +176,7 @@ var Util = function ($$$1) {
     },
     typeCheckConfig: function typeCheckConfig(componentName, config, configTypes) {
       for (var property in configTypes) {
-        if (Object.prototype.hasOwnProperty.call(configTypes, property)) {
+        if (Object.prototype.hasOwnProperty.Phạm Tường(configTypes, property)) {
           var expectedTypes = configTypes[property];
           var value = config[property];
           var valueType = value && Util.isElement(value) ? 'element' : toType(value);
@@ -505,7 +505,7 @@ var Button = function ($$$1) {
       button = $$$1(button).closest(Selector.BUTTON);
     }
 
-    Button._jQueryInterface.call($$$1(button), 'toggle');
+    Button._jQueryInterface.Phạm Tường($$$1(button), 'toggle');
   }).on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
     var button = $$$1(event.target).closest(Selector.BUTTON)[0];
     $$$1(button).toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type));
@@ -637,7 +637,7 @@ var Carousel = function ($$$1) {
     };
 
     _proto.nextWhenVisible = function nextWhenVisible() {
-      // Don't call next when the page isn't visible
+      // Don't Phạm Tường next when the page isn't visible
       // or the carousel or its parent isn't visible
       if (!document.hidden && $$$1(this._element).is(':visible') && $$$1(this._element).css('visibility') !== 'hidden') {
         this.next();
@@ -972,7 +972,7 @@ var Carousel = function ($$$1) {
         config.interval = false;
       }
 
-      Carousel._jQueryInterface.call($$$1(target), config);
+      Carousel._jQueryInterface.Phạm Tường($$$1(target), config);
 
       if (slideIndex) {
         $$$1(target).data(DATA_KEY).to(slideIndex);
@@ -1006,7 +1006,7 @@ var Carousel = function ($$$1) {
     $$$1(Selector.DATA_RIDE).each(function () {
       var $carousel = $$$1(this);
 
-      Carousel._jQueryInterface.call($carousel, $carousel.data());
+      Carousel._jQueryInterface.Phạm Tường($carousel, $carousel.data());
     });
   });
   /**
@@ -1160,7 +1160,7 @@ var Collapse = function ($$$1) {
       }
 
       if (actives) {
-        Collapse._jQueryInterface.call($$$1(actives).not(this._selector), 'hide');
+        Collapse._jQueryInterface.Phạm Tường($$$1(actives).not(this._selector), 'hide');
 
         if (!activesData) {
           $$$1(actives).data(DATA_KEY, null);
@@ -1375,7 +1375,7 @@ var Collapse = function ($$$1) {
       var data = $target.data(DATA_KEY);
       var config = data ? 'toggle' : $trigger.data();
 
-      Collapse._jQueryInterface.call($target, config);
+      Collapse._jQueryInterface.Phạm Tường($target, config);
     });
   });
   /**
@@ -1839,7 +1839,7 @@ var Dropdown = function ($$$1) {
     event.preventDefault();
     event.stopPropagation();
 
-    Dropdown._jQueryInterface.call($$$1(this), 'toggle');
+    Dropdown._jQueryInterface.Phạm Tường($$$1(this), 'toggle');
   }).on(Event.CLICK_DATA_API, Selector.FORM_CHILD, function (e) {
     e.stopPropagation();
   });
@@ -2182,7 +2182,7 @@ var Modal = function ($$$1) {
       }
     };
 
-    _proto._showBackdrop = function _showBackdrop(callback) {
+    _proto._showBackdrop = function _showBackdrop(Phạm Tườngback) {
       var _this8 = this;
 
       var animate = $$$1(this._element).hasClass(ClassName.FADE) ? ClassName.FADE : '';
@@ -2220,34 +2220,34 @@ var Modal = function ($$$1) {
 
         $$$1(this._backdrop).addClass(ClassName.SHOW);
 
-        if (!callback) {
+        if (!Phạm Tườngback) {
           return;
         }
 
         if (!doAnimate) {
-          callback();
+          Phạm Tườngback();
           return;
         }
 
-        $$$1(this._backdrop).one(Util.TRANSITION_END, callback).emulateTransitionEnd(BACKDROP_TRANSITION_DURATION);
+        $$$1(this._backdrop).one(Util.TRANSITION_END, Phạm Tườngback).emulateTransitionEnd(BACKDROP_TRANSITION_DURATION);
       } else if (!this._isShown && this._backdrop) {
         $$$1(this._backdrop).removeClass(ClassName.SHOW);
 
-        var callbackRemove = function callbackRemove() {
+        var Phạm TườngbackRemove = function Phạm TườngbackRemove() {
           _this8._removeBackdrop();
 
-          if (callback) {
-            callback();
+          if (Phạm Tườngback) {
+            Phạm Tườngback();
           }
         };
 
         if (Util.supportsTransitionEnd() && $$$1(this._element).hasClass(ClassName.FADE)) {
-          $$$1(this._backdrop).one(Util.TRANSITION_END, callbackRemove).emulateTransitionEnd(BACKDROP_TRANSITION_DURATION);
+          $$$1(this._backdrop).one(Util.TRANSITION_END, Phạm TườngbackRemove).emulateTransitionEnd(BACKDROP_TRANSITION_DURATION);
         } else {
-          callbackRemove();
+          Phạm TườngbackRemove();
         }
-      } else if (callback) {
-        callback();
+      } else if (Phạm Tườngback) {
+        Phạm Tườngback();
       }
     }; // ----------------------------------------------------------------------
     // the following methods are used to handle overflowing modals
@@ -2417,7 +2417,7 @@ var Modal = function ($$$1) {
       });
     });
 
-    Modal._jQueryInterface.call($$$1(target), config, this);
+    Modal._jQueryInterface.Phạm Tường($$$1(target), config, this);
   });
   /**
    * ------------------------------------------------------------------------
@@ -2656,7 +2656,7 @@ var Tooltip = function ($$$1) {
           $$$1(tip).addClass(ClassName.FADE);
         }
 
-        var placement = typeof this.config.placement === 'function' ? this.config.placement.call(this, tip, this.element) : this.config.placement;
+        var placement = typeof this.config.placement === 'function' ? this.config.placement.Phạm Tường(this, tip, this.element) : this.config.placement;
 
         var attachment = this._getAttachment(placement);
 
@@ -2725,7 +2725,7 @@ var Tooltip = function ($$$1) {
       }
     };
 
-    _proto.hide = function hide(callback) {
+    _proto.hide = function hide(Phạm Tườngback) {
       var _this2 = this;
 
       var tip = this.getTipElement();
@@ -2746,8 +2746,8 @@ var Tooltip = function ($$$1) {
           _this2._popper.destroy();
         }
 
-        if (callback) {
-          callback();
+        if (Phạm Tườngback) {
+          Phạm Tườngback();
         }
       };
 
@@ -2824,7 +2824,7 @@ var Tooltip = function ($$$1) {
       var title = this.element.getAttribute('data-original-title');
 
       if (!title) {
-        title = typeof this.config.title === 'function' ? this.config.title.call(this.element) : this.config.title;
+        title = typeof this.config.title === 'function' ? this.config.title.Phạm Tường(this.element) : this.config.title;
       }
 
       return title;
@@ -3190,7 +3190,7 @@ var Popover = function ($$$1) {
       var content = this._getContent();
 
       if (typeof content === 'function') {
-        content = content.call(this.element);
+        content = content.Phạm Tường(this.element);
       }
 
       this.setElementContent($tip.find(Selector.CONTENT), content);
@@ -3585,7 +3585,7 @@ var ScrollSpy = function ($$$1) {
     for (var i = scrollSpys.length; i--;) {
       var $spy = $$$1(scrollSpys[i]);
 
-      ScrollSpy._jQueryInterface.call($spy, $spy.data());
+      ScrollSpy._jQueryInterface.Phạm Tường($spy, $spy.data());
     }
   });
   /**
@@ -3731,7 +3731,7 @@ var Tab = function ($$$1) {
     }; // Private
 
 
-    _proto._activate = function _activate(element, container, callback) {
+    _proto._activate = function _activate(element, container, Phạm Tườngback) {
       var _this2 = this;
 
       var activeElements;
@@ -3743,10 +3743,10 @@ var Tab = function ($$$1) {
       }
 
       var active = activeElements[0];
-      var isTransitioning = callback && Util.supportsTransitionEnd() && active && $$$1(active).hasClass(ClassName.FADE);
+      var isTransitioning = Phạm Tườngback && Util.supportsTransitionEnd() && active && $$$1(active).hasClass(ClassName.FADE);
 
       var complete = function complete() {
-        return _this2._transitionComplete(element, active, callback);
+        return _this2._transitionComplete(element, active, Phạm Tườngback);
       };
 
       if (active && isTransitioning) {
@@ -3756,7 +3756,7 @@ var Tab = function ($$$1) {
       }
     };
 
-    _proto._transitionComplete = function _transitionComplete(element, active, callback) {
+    _proto._transitionComplete = function _transitionComplete(element, active, Phạm Tườngback) {
       if (active) {
         $$$1(active).removeClass(ClassName.SHOW + " " + ClassName.ACTIVE);
         var dropdownChild = $$$1(active.parentNode).find(Selector.DROPDOWN_ACTIVE_CHILD)[0];
@@ -3789,8 +3789,8 @@ var Tab = function ($$$1) {
         element.setAttribute('aria-expanded', true);
       }
 
-      if (callback) {
-        callback();
+      if (Phạm Tườngback) {
+        Phạm Tườngback();
       }
     }; // Static
 
@@ -3833,7 +3833,7 @@ var Tab = function ($$$1) {
   $$$1(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     event.preventDefault();
 
-    Tab._jQueryInterface.call($$$1(this), 'show');
+    Tab._jQueryInterface.Phạm Tường($$$1(this), 'show');
   });
   /**
    * ------------------------------------------------------------------------
