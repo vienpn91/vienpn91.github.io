@@ -198,6 +198,7 @@ h1.logo-w3layouts a.navbar-brand {
 
 .nav-mega .dropdown-menu.mega-menu>li {
     padding: 3em 2em;
+    margin-top: -1em;
 }
 
 .nav-mega .dropdown-menu.mega-menu .media-list .media {
