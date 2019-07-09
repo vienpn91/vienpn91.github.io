@@ -1,8 +1,79 @@
-- name: Home
-  link: /
-- name: About
-  link: /about/
-- name: Blog
-  link: /blog.html
-- name: Staff
-  link: /staff.html
+- title: Trang Chủ
+  url: /
+- title: Sản Phẩm Mới
+  url: /about/
+  sublink:
+    - title: FAQ
+      url: /custoimer.html
+    - title: Documentation
+      url: /single.html
+    - title: separator
+    - title: Customer Support
+      url: /customer-support.html
+    - title: goooo
+    - title: Customer Support
+      url: /customer-support.html
+    - title: Customer Support
+      url: /customer-support.html
+  sublinks:
+    - title: FAQ
+      url: /custoimer.html
+    - title: Documentation
+      url: /single.html
+    - title: separator
+    - title: Customer Support
+      url: /customer-support.html
+    - title: goooo
+    - title: Customer Support
+      url: /customer-support.html
+    - title: Customer Support
+      url: /customer-support.html
+
+- title: Tất Cả Sản Phẩm
+  url: /shop.html
+  sublink:
+    - title: FAQ
+      url: /custoimer.html
+    - title: Documentation
+      url: /single.html
+    - title: separator
+    - title: Customer Support
+      url: /customer-support.html
+  sublinks:
+    - title: FAQ
+      url: /custoimer.html
+    - title: Documentation
+      url: /single.html
+    - title: separator
+    - title: Customer Support
+      url: /customer-support.html
+    - title: goooo
+    - title: Customer Support
+      url: /customer-support.html
+    - title: Customer Support
+      url: /customer-support.html
+- title: Liên Hệ
+  url: /contact.html
+- title: Support
+  url: /payment.html
+  sublink:
+    - title: FAQ
+      url: /custoimer.html
+    - title: Documentation
+      url: /single.html
+    - title: separator
+    - title: Customer Support
+      url: /customer-support.html
+  sublinks:
+    - title: FAQ
+      url: /custoimer.html
+    - title: Documentation
+      url: /single.html
+    - title: separator
+    - title: Customer Support
+      url: /customer-support.html
+    - title: goooo
+    - title: Customer Support
+      url: /customer-support.html
+    - title: Customer Support
+      url: /customer-support.html
