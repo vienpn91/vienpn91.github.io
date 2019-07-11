@@ -8839,7 +8839,8 @@ input.checked {
 /*-- nuts --*/
 .men-thumb-item {
   text-align: center;
-  position: relative; }
+  position: relative;
+  min-height: 19em; }
 
 .item-info-product {
   text-align: center; }
@@ -8882,7 +8883,10 @@ span.item_price {
   color: #000; }
 
 .product-men img {
-  width: 100%; }
+  width: 100%;
+  height: 18em;
+  object-fit: cover;
+  object-position: center; }
 
 .grid_meta {
   float: left;
@@ -9054,7 +9058,7 @@ ul.footer_list_icons.single_in li a:hover {
   left: -1em; }
 
 .bootstrap-tab-text-grids {
-  margin: 3em 0 0 0em; }
+  margin: 0em 0 0 0em; }
 
 .bootstrap-tab-text-grid-right p {
   margin: 2em 0 0;
@@ -9161,7 +9165,8 @@ span.item_price {
   cursor: pointer; }
 
 .responsive_tabs {
-  margin-top: 4em; }
+  margin-top: 4em;
+  width: 100%; }
 
 .new_arrivals h3 {
   font-size: 1.4em;
@@ -11335,7 +11340,7 @@ ul.links li a:hover {
     font-size: .9em; }
 
   h1.logo-w3layouts a.navbar-brand {
-    font-size: 1.3em; }
+    font-size: 1.1em; }
 
   h3.tittle-w3layouts {
     font-size: 2.2em; } }
@@ -11544,7 +11549,7 @@ ul.links li a:hover {
     letter-spacing: 2px; }
 
   h1.logo-w3layouts a.navbar-brand {
-    font-size: 1.2em; }
+    font-size: 1.1em; }
 
   h3.tittle-w3layouts {
     font-size: 1.7em;
@@ -11598,7 +11603,7 @@ ul.links li a:hover {
     min-height: 109px; } }
 @media (max-width: 375px) {
   h1.logo-w3layouts a.navbar-brand {
-    font-size: 1.1em; } }
+    font-size: 1em; } }
 @media (max-width: 320px) {
   h1.logo-w3layouts a.navbar-brand {
     font-size: 1em; }
