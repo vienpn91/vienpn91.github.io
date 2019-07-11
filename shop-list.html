@@ -1,0 +1,183 @@
+---
+layout: default
+title: Shop
+permalink: /san-pham-list/
+---
+<div class="banner_inner">
+  <div class="services-breadcrumb">
+    <div class="inner_breadcrumb">
+      <ul class="short">
+        <li>
+          <a href="/">Home</a>
+          <i>|</i>
+        </li>
+        <li>Shop List</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
+  <div class="container-fluid">
+    <div class="inner-sec-shop px-lg-4 px-3">
+      <h3 class="tittle-w3layouts my-lg-4 mt-3">Tất Cả Sản Phẩm </h3>
+      <div class="row">      
+        <div id="horizontal-responsive_tabs" class="responsive_tabs">
+          <div id="horizontalTab-list">
+            <ul class="resp-tabs-list">
+              <li>Tròng Kính</li>
+              <li>Gọng Kính</li>
+              <li>Kính Mát Nữ</li>
+              <li>Kính Mát Nam</li>
+              <li>Hàng Sale</li>
+            </ul>
+          <div class="resp-tabs-container vienpn-resp">
+              <!--/tab_one-->
+            <div class="tab1">
+              <div class="single_page">
+                {% for post in site.categories['trong-kinh'] reversed %}
+                <div class="bootstrap-tab-text-grids">
+                  <div class="bootstrap-tab-text-grid">
+                    <div class="bootstrap-tab-text-grid-left">
+                      <img src="{{ post.url_hinh }}" alt=" " class="img-fluid">
+                    </div>
+                    <div class="bootstrap-tab-text-grid-right">
+                      <h6><a href="{{ post.url }}">{{ post.title }}</a></h6>
+                      <ul>
+                        <li><a href="{{ post.url }}">Giá: {{ post.gia }}</a></li>
+
+                      </ul>
+                      <p>{{ post.content }}</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+              <!--//tab_one-->
+            <div class="tab2">
+              <div class="single_page">
+                {% for post in site.posts reversed %}
+                <div class="bootstrap-tab-text-grids">
+                  <div class="bootstrap-tab-text-grid">
+                    <div class="bootstrap-tab-text-grid-left">
+                      <img src="{{ post.url_hinh }}" alt=" " class="img-fluid">
+                    </div>                    
+                    <div class="bootstrap-tab-text-grid-right">
+                      <h6><a href="{{ post.url }}">{{ post.title }}</a></h6>
+                      <ul>
+                        <li><a href="#">Còn Hàng</a></li>
+                      </ul>
+                      <p>{{ post.content }}</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                  </div>
+                </div>
+                  {% endfor %}
+              </div>
+            </div>
+            
+            <div class="tab3">
+              <div class="single_page">
+                {% for post in site.posts reversed %}
+                <div class="bootstrap-tab-text-grids">
+                  <div class="bootstrap-tab-text-grid">
+                    <div class="bootstrap-tab-text-grid-left">
+                      <img src="{{ post.url_hinh }}" alt=" " class="img-fluid">
+                    </div>
+                    
+                    <div class="bootstrap-tab-text-grid-right">
+                      <h6><a href="{{ post.url }}">{{ post.title }}</a></h6>
+                      <ul>
+                        <li><a href="{{ post.url }}">Giá: {{ post.gia }}</a></li>
+                        <li><a href="#">Còn Hàng</a></li>
+                      </ul>
+                      <p>{{ post.content }}</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+
+            <div class="tab4">
+              <div class="single_page">
+                {% for post in site.posts reversed %}
+                <div class="bootstrap-tab-text-grids">
+                  <div class="bootstrap-tab-text-grid">
+                    <div class="bootstrap-tab-text-grid-left">
+                      <img src="{{ post.url_hinh }}" alt=" " class="img-fluid">
+                    </div>
+                    
+                    <div class="bootstrap-tab-text-grid-right">
+                      <h6><a href="{{ post.url }}">{{ post.title }}</a></h6>
+                      <ul>
+                        <li><a href="{{ post.url }}">Giá: {{ post.gia }}</a></li>
+                        <li><a href="#">Còn Hàng</a></li>
+                      </ul>
+                      <p>{{ post.content }}</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+
+            <div class="tab5">
+              <div class="single_page">
+                {% for post in site.posts reversed %}
+                <div class="bootstrap-tab-text-grids">
+                  <div class="bootstrap-tab-text-grid">
+                    <div class="bootstrap-tab-text-grid-left">
+                      <img src="{{ post.url_hinh }}" alt=" " class="img-fluid">
+                    </div>
+                    
+                    <div class="bootstrap-tab-text-grid-right">
+                      <h6><a href="{{ post.url }}">{{ post.title }}</a></h6>
+                      <ul>
+                        <li><a href="{{ post.url }}">Giá: {{ post.gia }}</a></li>
+                        <li><a href="#">Còn Hàng</a></li>
+                      </ul>
+                      <p>{{ post.content }}</p>
+                    </div>
+                    <div class="clearfix"> </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+
+            </div>
+          </div>
+        </div>
+        <!--//tabs-->
+        <!--//product right-->
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/assets/js/easy-responsive-tabs.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#horizontalTab-list').easyResponsiveTabs({
+      type: 'default', //Types: default, vertical, accordion           
+      width: 'auto', //auto or any width like 600px
+      fit: true, // 100% fit in a container
+      closed: 'accordion', // Start closed if in accordion view
+      activate: function (event) { // Callback function if tab is switched
+        var $tab = $(this);
+        var $info = $('#tabInfo');
+        var $name = $('span', $info);
+        $name.text($tab.text());
+        $info.show();
+      }
+    });
+    $('#verticalTab').easyResponsiveTabs({
+      type: 'vertical',
+      width: 'auto',
+      fit: true
+    });
+  });
+</script>

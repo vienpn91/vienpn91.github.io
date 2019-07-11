@@ -1,12 +1,16 @@
 body {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
-ul.resp-tabs-list,
-p {
-  margin: 0px;
-  padding: 0px;
+p,
+ul.resp-tabs-list {
+  margin: 0;
+  padding: 0;
+}
+
+#horizontalTab-list .resp-tabs-list li {
+  width: 20%;
 }
 
 .resp-tabs-list li {
@@ -19,7 +23,7 @@ p {
   color: #2A2B2F;
   width: 25%;
   text-align: center;
-  font-size: 0.9em;
+  font-size: .9em;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -30,12 +34,14 @@ p {
   clear: left;
   border: 1px solid #ddd;
 }
-
+.resp-tabs-container.vienpn-resp{
+  padding: 0;
+}
 ul.resp-tabs-list li i {
   display: block;
   font-size: 2em;
   color: #000;
-  margin-bottom: 0.3em;
+  margin-bottom: .3em;
 }
 
 h2.resp-accordion {
@@ -66,11 +72,11 @@ h2.resp-accordion {
   border-right: 10px solid rgba(199, 57, 57, 0);
   left: 45%;
   top: 103%;
-  transition: 0.5s all;
-  -webkit-transition: 0.5s all;
-  -o-transition: 0.5s all;
-  -moz-transition: 0.5s all;
-  -ms-transition: 0.5s all;
+  transition: .5s all;
+  -webkit-transition: .5s all;
+  -o-transition: .5s all;
+  -moz-transition: .5s all;
+  -ms-transition: .5s all;
 }
 
 .resp-tab-active {
@@ -78,23 +84,23 @@ h2.resp-accordion {
   color: #fff;
 }
 
-.resp-content-active,
-.resp-accordion-active {
+.resp-accordion-active,
+.resp-content-active {
   display: block;
 }
 
 h2.resp-accordion {
   font-size: 17px;
   border: 1px solid #c1c1c1;
-  border-top: 0px solid #c1c1c1;
-  margin: 0px;
+  border-top: 0 solid #c1c1c1;
+  margin: 0;
   padding: 16px 15px;
   letter-spacing: 1px;
 }
 
 h2.resp-tab-active {
-  border-bottom: 0px solid #fff !important;
-  margin-bottom: 0px !important;
+  border-bottom: 0 solid #fff !important;
+  margin-bottom: 0 !important;
   padding: 10px 15px !important;
 }
 
@@ -112,14 +118,14 @@ h2.resp-tab-title:last-child {
 
 .resp-vtabs .resp-tabs-list li {
   display: block;
-  padding: 15px 15px !important;
+  padding: 15px !important;
   margin: 0;
   cursor: pointer;
   float: none;
 }
 
 .resp-vtabs .resp-tabs-container {
-  padding: 0px;
+  padding: 0;
   background-color: #fff;
   border: 1px solid #c1c1c1;
   float: left;
@@ -179,7 +185,7 @@ h2.resp-tab-active {
 
 .resp-jfit {
   width: 100%;
-  margin: 0px;
+  margin: 0;
 }
 
 .resp-tab-content-active {
@@ -192,8 +198,8 @@ h2.resp-accordion:first-child {
 
 /*Here your can change the breakpoint to set the accordion, when screen resolution changed*/
 @media(max-width:1050px) {
-    .resp-tabs-list li {
-      font-size: 14px;
+  .resp-tabs-list li {
+    font-size: 14px;
   }
 }
 @media(max-width:991px) {
@@ -202,55 +208,66 @@ h2.resp-accordion:first-child {
     width: 25%;
     font-size: 1em;
   }
+
+  #horizontalTab-list .resp-tabs-list li {
+    width: 20%;
+  }
+
   .resp-tabs-list li {
-      font-size: 14px;
+    font-size: 14px;
   }
 }
-
 @media only screen and (max-width: 768px) {
   ul.resp-tabs-list {
     display: none;
   }
+
   h2.resp-accordion {
     display: block;
   }
+
   .resp-vtabs .resp-tab-content {
     border: 1px solid #C1C1C1;
   }
+
   .resp-vtabs .resp-tabs-container {
     border: none;
     float: none;
-    width:100%;
+    width: 100%;
     min-height: initial;
     clear: none;
   }
+
   .resp-accordion-closed {
     display: none !important;
   }
+
   .resp-vtabs .resp-tab-content:last-child {
     border-bottom: 1px solid #c1c1c1 !important;
   }
+
   h2.resp-tab-active {
     background: #ff4e00 !important;
   }
+
   .resp-tabs-list li {
-      font-size: 13px;
+    font-size: 13px;
   }
+
   .tabs-grids {
-      width: 90%;
+    width: 90%;
   }
 }
-
 @media only screen and (max-width: 568px) {
   .resp-arrow {
     margin-top: 8px;
     border-top: 9px solid #1c2020;
   }
+
   h2.resp-tab-active span.resp-arrow {
     border-bottom: 9px solid #e54945;
   }
 }
-
 @media only screen and (max-width: 384px) {
   .resp-arrow {
     margin-top: 7px;
@@ -258,6 +275,7 @@ h2.resp-accordion:first-child {
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
   }
+
   h2.resp-tab-active span.resp-arrow {
     border-bottom: 8px solid #e54945;
     border-left: 5px solid transparent;
