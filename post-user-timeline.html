@@ -6,7 +6,8 @@ permalink: /post-user-timeline/
 <div>
 	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 	</fb:login-button>
-	
+	<button onclick="post()" >post</button>
+	vienpn
 	<div id="status">
 	</div>
 <script>
@@ -20,7 +21,17 @@ permalink: /post-user-timeline/
         'into this webpage.';
     }
   }
+function post(){
 
+	var body = 'Reading JS SDK documentation';
+	FB.api('/me/feed', 'post', { message: body }, function(response) {
+		if (!response || response.error) {
+			alert('Error occured');
+		} else {
+			alert('Post ID: ' + response.id);
+		}
+	});
+}
 
   function checkLoginState() {               // Called when a person is finished with the Login Button.
     FB.getLoginStatus(function(response) {   // See the onlogin handler
