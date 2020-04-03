@@ -61,6 +61,12 @@ permalink: /post-user-timeline/
 			});
 		}
 
+
+		function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
 		// posting on user timeline
 		function post() {
 			FB.api('/me/feed', 'post', {message: 'my first status...'}, function(response) {
@@ -70,8 +76,15 @@ permalink: /post-user-timeline/
 	</script>
 
 	<div id="status"></div>
+	<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=537820363809041&autoLogAppEvents=1"></script>
+<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
 	<button onclick="getInfo()">Get Info</button>
-	<button onclick="post()">Post</button>
+	<fb:login-button 
+		scope="public_profile,email"
+		onlogin="checkLoginState();">
+	</fb:login-button>
+	<button onclick="post()">Pos1111t</button>
 	<button onclick="login()" id="login">Login</button>
 </body>
 </html>
