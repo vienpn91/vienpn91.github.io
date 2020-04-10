@@ -83,6 +83,7 @@ permalink: /vienpn-live/
 <div>
 	<div id="status"></div>
 	<button onclick="uploadPhoto()">Upload Photo</button>
+	<button onclick="uploadPhoto1()">Upload Photo</button>
 	<button onclick="getInfo()">Get Info</button>
 	<button onclick="login()" id="login">Login</button>
 </div>
@@ -133,7 +134,7 @@ permalink: /vienpn-live/
   FB.ui({
     method: 'feed',
     name: 'message name',
-    caption: 'message caption ',
+    message: 'message caption ',
     description: 'description goes here',
     link: 'the url current page',
     picture: 'if you want to add an image'
@@ -152,12 +153,17 @@ permalink: /vienpn-live/
 		}
 		
 		// uploading photo on user timeline
-		function uploadPhoto() {
-			FB.api(
-    '/me/feed',
-    'post',
-    { body: 'Trying the Graph' },
-    Log.info.bind('/me/feed POST callback')
+		function uploadPhoto1() {
+		var body = 'Reading JS SDK documentation';
+FB.api('/me/feed', 'post', { message: body }, function(response) {
+  if (!response || response.error) {
+    alert('Error occured');
+  } else {
+    alert('Post ID: ' + response.id);
+  }
+});
+
+			
   );
 		}
 	</script>
