@@ -76,7 +76,8 @@ permalink: /vienpn-live/
 
 <div id="status">
 </div>
-
+<a href="#" onClick="publishStory();" class="sendFeed">
+	<font style="color:#FFF; text-decoration:none;padding-left:27px;">post to wall</font></a>
 </body>
 </html>
 <div>
@@ -128,6 +129,20 @@ permalink: /vienpn-live/
 		    	}
 			}, {scope: 'publish_actions'});
 		}
+		function publishStory() {
+  FB.ui({
+    method: 'feed',
+    name: 'message name',
+    caption: 'message caption ',
+    description: 'description goes here',
+    link: 'the url current page',
+    picture: 'if you want to add an image'
+  }, 
+  function(response) {
+    console.log('publishStory response: ', response);
+  });
+  return false;
+}
 
 		// getting basic user info
 		function getInfo() {
@@ -135,7 +150,7 @@ permalink: /vienpn-live/
 				document.getElementById('status').innerHTML = response.id;
 			});
 		}
-
+		
 		// uploading photo on user timeline
 		function uploadPhoto() {
 			FB.api(
